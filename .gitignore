@@ -1,2 +1,10 @@
 # Project exclude paths
-/sever/node_modules/
+/server/node_modules/
+
+/server/.idea
+
+/client/.idea
+
+/client/FlosGameBoard/.idea
+
+.idea
