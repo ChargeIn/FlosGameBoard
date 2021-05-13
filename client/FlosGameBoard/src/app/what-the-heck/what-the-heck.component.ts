@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Florian Plesker
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Florian Plesker
+ */
+
 import {Component, OnDestroy} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
 import {Router} from '@angular/router';
@@ -30,6 +34,9 @@ export class LandingPageComponent implements OnDestroy {
 
     toWhatTheHeck() {
         this.connection.stop('landingPage');
-        this.router.navigate(['/what-the-heck'])
+    }
+
+    createRoom(gameType: 1, obj: any) {
+
     }
 }

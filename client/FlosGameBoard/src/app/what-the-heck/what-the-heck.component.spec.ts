@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Florian Plesker
+ */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WhatTheHeckComponent } from './what-the-heck.component';
