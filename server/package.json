@@ -2,8 +2,9 @@
   "name": "sever",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
+    "start": "tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,5 +13,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "tslint": "^5.12.1",
+    "typescript": "^4.2.4"
   }
 }

@@ -23,7 +23,7 @@ export interface LobbyInfo {
 export class Lobby {
     users: User[] = [];
     host: User;
-    game: number;
+    game: number = 0;
     name: string;
     id: number;
 

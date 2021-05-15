@@ -8,6 +8,8 @@
       <excludeFolder url="file://$MODULE_DIR$/client/FlosGameBoard/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/client/FlosGameBoard/dist" />
       <excludeFolder url="file://$MODULE_DIR$/server/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/copyright" />
+      <excludeFolder url="file://$MODULE_DIR$/server/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

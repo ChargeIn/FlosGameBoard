@@ -4,7 +4,6 @@
 
 import {Component, OnDestroy} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
-import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -19,7 +18,7 @@ export class LandingPageComponent implements OnDestroy {
     messages: string[] = [];
     private unsubscribe = new Subject<void>();
 
-    constructor(private readonly connection: ConnectionService, private readonly router: Router) {
+    constructor(private readonly connection: ConnectionService) {
         this.connection.landingChat.pipe(takeUntil(this.unsubscribe)).subscribe(m => this.messages.push(m))
     }
 
@@ -34,9 +33,5 @@ export class LandingPageComponent implements OnDestroy {
 
     toWhatTheHeck() {
         this.connection.stop('landingPage');
-    }
-
-    createRoom(gameType: 1, obj: any) {
-
     }
 }

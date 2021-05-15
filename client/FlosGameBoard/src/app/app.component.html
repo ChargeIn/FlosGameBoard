@@ -1,4 +1,22 @@
 <!--
   ~ Copyright (c) Florian Plesker
   -->
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" class="main-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="main-wrapper">
+    <mat-sidenav
+        #sidenav
+        class="sidenav"
+        mode="side"
+        opened="true"
+    >
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content class="main-content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

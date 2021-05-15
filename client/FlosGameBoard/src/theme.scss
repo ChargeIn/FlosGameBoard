@@ -1,0 +1,135 @@
+/*!
+ * Copyright (c) Florian Plesker
+ */
+
+
+$primary: (
+        50 : #e5e7e8,
+        100 : #bec2c6,
+        200 : #929aa1,
+        300 : #66717b,
+        400 : #46525e,
+        500 : #253442,
+        600 : #212f3c,
+        700 : #1b2733,
+        800 : #16212b,
+        900 : #0d151d,
+        A100 : #5fa2ff,
+        A200 : #2c84ff,
+        A400 : #0067f8,
+        A700 : #005ddf,
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #ffffff,
+                400 : #ffffff,
+                500 : #ffffff,
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #ffffff,
+                A400 : #ffffff,
+                A700 : #ffffff,
+        )
+);
+
+$accent: (
+        50 : #f2f8fb,
+        100 : #dfeff5,
+        200 : #cae4ef,
+        300 : #b5d9e9,
+        400 : #a5d0e4,
+        500 : #95c8df,
+        600 : #8dc2db,
+        700 : #82bbd7,
+        800 : #78b4d2,
+        900 : #67a7ca,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #d6f0ff,
+        A700 : #bde7ff,
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #000000,
+                400 : #000000,
+                500 : #000000,
+                600 : #000000,
+                700 : #000000,
+                800 : #000000,
+                900 : #000000,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #000000,
+                A700 : #000000,
+        )
+);
+
+
+$warn: (
+        50 : #f0e3e4,
+        100 : #d8b9bc,
+        200 : #bf8b8f,
+        300 : #a55c62,
+        400 : #913941,
+        500 : #7e161f,
+        600 : #76131b,
+        700 : #6b1017,
+        800 : #610c12,
+        900 : #4e060a,
+        A100 : #ff8286,
+        A200 : #ff4f54,
+        A400 : #ff1c23,
+        A700 : #ff030a,
+        contrast: (
+                50 : #000000,
+                100 : #000000,
+                200 : #000000,
+                300 : #ffffff,
+                400 : #ffffff,
+                500 : #ffffff,
+                600 : #ffffff,
+                700 : #ffffff,
+                800 : #ffffff,
+                900 : #ffffff,
+                A100 : #000000,
+                A200 : #000000,
+                A400 : #ffffff,
+                A700 : #ffffff,
+        )
+);
+//- ----------------------------------
+
+@import '~@angular/material/theming';
+
+// Define a theme
+$mat-primary: mat-palette($primary, 800, 500, 900);
+$mat-accent: mat-palette($accent, 800, 700, 900);
+$mat-warn: mat-palette($warn, 800, 700, 900);
+$mat-theme: mat-light-theme($mat-primary, $mat-accent, $mat-warn);
+
+// TODO: Dark/Light Theme
+//// Define a dark theme
+//$dark-primary: mat.define-palette(mat.$pink-palette);
+//$dark-accent: mat.define-palette(mat.$bluegray-palette);
+//$dark-theme: mat.define-dark-theme((
+//        color: (
+//                primary: $dark-primary,
+//                accent: $dark-accent,
+//        )
+//));
+//
+//// Apply the dark theme by default
+//@include mat.core-theme($dark-theme);
+//@include mat.button-theme($dark-theme);
+//
+//// Apply the light theme only when the `.my-light-theme` CSS class is applied
+//// to an ancestor element of the components (such as `body`).
+//.my-light-theme {
+//  @include mat.core-color($light-theme);
+//  @include mat.button-color($light-theme);
+//}
