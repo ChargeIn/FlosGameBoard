@@ -17,6 +17,10 @@ import {FormsModule} from '@angular/forms';
         CommonModule,
         LandingPageRoutingModule,
         FormsModule
+    ],
+    exports: [
+        LandingPageComponent,
+        LandingPageRoutingModule
     ]
 })
 export class LandingPageModule {

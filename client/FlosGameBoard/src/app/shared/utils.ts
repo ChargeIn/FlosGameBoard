@@ -8,4 +8,10 @@ export interface LobbyInfo {
     host: string,
     type: number,
     userCount: number,
+    users: UserInfo[],
+}
+
+export interface UserInfo {
+    name: string,
+    id: string,
 }

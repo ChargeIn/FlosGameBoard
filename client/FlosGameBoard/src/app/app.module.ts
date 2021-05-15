@@ -8,7 +8,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CommonModule} from '@angular/common';
-import {ConnectionService} from './connection/connection.service';
 import {SocketIoModule} from 'ngx-socket-io';
 import {environment} from '../environments/environment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -34,9 +33,7 @@ import {SidenavComponent} from './sidenav/sidenav.component';
         SocketIoModule.forRoot(environment.config),
         BrowserAnimationsModule,
     ],
-    providers: [
-        ConnectionService
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

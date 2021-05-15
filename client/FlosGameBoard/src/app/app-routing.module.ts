@@ -4,8 +4,14 @@
 
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {LobbyGuard} from './lobby/lobby.guard';
 
 const routes: Routes = [
+    {
+        path: 'lobby',
+        loadChildren: () => import('./lobby/lobby.module').then(m => m.LobbyModule),
+        canActivate: [LobbyGuard]
+    },
     {
         path: 'what-the-heck',
         loadChildren: () => import('./what-the-heck/what-the-heck-routing.module').then(m => m.WhatTheHeckRoutingModule)
@@ -18,7 +24,8 @@ const routes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [LobbyGuard]
 })
 export class AppRoutingModule {
 }

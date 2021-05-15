@@ -5,8 +5,9 @@
 import {Injectable} from '@angular/core';
 import {Socket} from 'ngx-socket-io';
 import {Observable} from 'rxjs';
-import {LobbyInfo} from '../shared/utils';
+import {LobbyInfo, UserInfo} from '../shared/utils';
 import {map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -14,11 +15,22 @@ import {map} from 'rxjs/operators';
 export class ConnectionService {
 
     landingChat: Observable<string>;
+    lobby: LobbyInfo | null = null;
 
-    constructor(private socket: Socket) {
+    constructor(private readonly socket: Socket, private readonly router: Router) {
         socket.connect();
 
         this.landingChat = this.socket.fromEvent('landingChat');
+
+        this.socket.on('joinLobby', (lobbyAck: LobbyInfo) => {
+            this.lobby = lobbyAck;
+            this.router.navigate(['lobby']);
+        });
+
+        this.socket.on('playerJoined', (userInfo: UserInfo) => {
+            this.lobby!.userCount!++;
+            this.lobby!.users.push(userInfo);
+        });
     }
 
     stop(namespace: string) {
@@ -35,6 +47,15 @@ export class ConnectionService {
     }
 
     createLobby(user: string, name: string) {
-        this.socket.emit('createLobby', {user, name});
+        this.socket.emit('createLobby', ({user, name}));
+    }
+
+    leaveLobby() {
+        this.socket.emit('leaveLobby', this.lobby!.id);
+        this.lobby = null;
+    }
+
+    joinLobby(user: string, lobbyId: number) {
+        this.socket.emit('joinLobby', ({user, lobbyId}));
     }
 }

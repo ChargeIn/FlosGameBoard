@@ -26,6 +26,8 @@ export class WhatTheHeck {
     private scores: { [id: string]: number } = {};
     private cardDeck: number[] = [];
     private currentCard: number;
+    private cardsPlayed: number = 0;
+    private readonly maxCardsPlayable = 14;
 
     constructor(users: User[]) {
         this.users = users;
@@ -41,6 +43,7 @@ export class WhatTheHeck {
                 this.cards.push({user, card: number});
 
                 if (this.cards.length === this.users.length) {
+                    this.cardsPlayed++;
                     const winner: string | null = this.getWinner();
 
                     this.users.forEach(u => {
@@ -51,7 +54,7 @@ export class WhatTheHeck {
                     if (winner) {
                         this.scores[winner] += this.currentCard;
 
-                        if (this.cardDeck.length > 0) {
+                        if (this.cardDeck.length > 0 && this.cardsPlayed < this.maxCardsPlayable) {
                             this.currentCard = this.cardDeck.pop()!;
                             this.users.forEach(user => user.socket.emit('nextCard', this.currentCard));
                         } else {
@@ -73,11 +76,11 @@ export class WhatTheHeck {
 
     generateNewCardDeck() {
         this.cardDeck = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, -1, -2, -3, -4, -5];
-        this.cardDeck = this.cardDeck.sort(() => Math.random() - 0.5)
+        this.cardDeck = this.cardDeck.sort(() => Math.random() - 0.5);
     }
 
     getWinner(): string | null {
-        let cardCounts = Array<number>(14).fill(0);
+        let cardCounts = Array<number>(this.maxCardsPlayable).fill(0);
 
         this.cards.forEach(card => cardCounts[card.card]++);
         cardCounts = cardCounts.filter(count => count === 1);

@@ -2,8 +2,6 @@
  * Copyright (c) Florian Plesker
  */
 
-import {LobbyInfo} from './utils';
-
 export interface JoinLobbyRequest {
     user: string,
     roomId: number,
@@ -12,9 +10,4 @@ export interface JoinLobbyRequest {
 export interface CreateLobbyRequest {
     user: string,
     name: string,
-}
-
-export interface JoinLobbyAck {
-    lobbyInfo: LobbyInfo,
-    users: string[],
 }
