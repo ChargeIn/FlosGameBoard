@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Florian Plesker
+ */
+
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
 import {LobbyInfo} from '../shared/utils';

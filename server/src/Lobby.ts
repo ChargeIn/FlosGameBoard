@@ -13,7 +13,7 @@ export interface User {
 export interface LobbyInfo {
     id: number,
     name: string
-    host: string,
+    host: boolean,
     type: number,
     userCount: number,
     users: UserInfo[],
@@ -27,20 +27,23 @@ export interface UserInfo {
 
 export class Lobby {
     users: User[] = [];
-    host: User;
+    host: number;
     game: number = 0;
     name: string;
     id: number;
 
 
     constructor(user: User, name: string, id: number) {
-        this.host = user;
+        this.host = 0;
         this.name = name;
         this.id = id;
         this.addUser(user);
 
-        this.host.socket.on('startGame', () => GameFactory.getGame(this.game, this.users))
-        this.host.socket.on('changeGame', (i) => {
+        this.users[this.host].socket.on('startGame', () => {
+            this.users.forEach(u => u.socket.emit('gameStarted', this.game));
+            GameFactory.getGame(this.game, this.users);
+        })
+        this.users[this.host].socket.on('changeGame', (i) => {
             this.game = i;
             this.users.forEach(u => u.socket.emit('changeGame', i));
         });
@@ -59,11 +62,13 @@ export class Lobby {
     }
 
     removeUser(socket: Socket) {
-        this.users = this.users.filter(s => s.socket.id !== socket.id);
 
-        if (this.users[0]?.socket.id !== this.host.socket.id) {
-            this.changeHost(1);
+        if (this.users[this.host].socket.id === socket.id) {
+            this.changeHost(0);
         }
+
+        this.users = this.users.filter(u => u.socket.id !== socket.id);
+        this.users.forEach(user => user.socket.emit('playerLeft', socket.id));
     }
 
     isEmpty() {
@@ -71,19 +76,18 @@ export class Lobby {
     }
 
     changeHost(index: number) {
-        this.host.socket.off('changeGame', () => {
-        });
-        this.host.socket.off('start', () => {
-        });
+        this.users[this.host].socket.removeAllListeners('changeGame');
+        this.users[this.host].socket.removeAllListeners('start');
 
-        this.host = this.users[index];
+        this.host = index;
+        this.users[this.host].socket.emit('changeHost', true);
     }
 
-    getInfo(): LobbyInfo {
+    getInfo(socket: Socket): LobbyInfo {
         return {
             id: this.id,
             name: this.name,
-            host: this.host.name,
+            host: this.users[this.host].socket.id === socket.id,
             type: this.game,
             userCount: this.users.length,
             users: this.users.map(u => ({name: u.name, id: u.socket.id})),

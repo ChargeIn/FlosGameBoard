@@ -30,8 +30,4 @@ export class LandingPageComponent implements OnDestroy {
     postMessage() {
         this.connection.postMessage(this.message);
     }
-
-    toWhatTheHeck() {
-        this.connection.stop('landingPage');
-    }
 }

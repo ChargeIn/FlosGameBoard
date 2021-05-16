@@ -2,4 +2,12 @@
   ~ Copyright (c) Florian Plesker
   -->
 
-<p>what-the-heck works!</p>
+<div class="card-container">
+    <div *ngFor="let card of currentDeck">
+        <app-card (click)="playCard(card)" [value]=card></app-card>
+    </div>
+</div>
+
+<div *ngIf="currentCard" class="currentCard">
+    {{currentCard}}
+</div>

@@ -5,6 +5,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LobbyGuard} from './lobby/lobby.guard';
+import {WhatTheHeckGuard} from './what-the-heck/what-the-heck.guard';
 
 const routes: Routes = [
     {
@@ -14,7 +15,8 @@ const routes: Routes = [
     },
     {
         path: 'what-the-heck',
-        loadChildren: () => import('./what-the-heck/what-the-heck-routing.module').then(m => m.WhatTheHeckRoutingModule)
+        loadChildren: () => import('./what-the-heck/what-the-heck-routing.module').then(m => m.WhatTheHeckRoutingModule),
+        canActivate: [WhatTheHeckGuard]
     },
     {
         path: '**',
@@ -25,7 +27,7 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-    providers: [LobbyGuard]
+    providers: [LobbyGuard, WhatTheHeckGuard]
 })
 export class AppRoutingModule {
 }

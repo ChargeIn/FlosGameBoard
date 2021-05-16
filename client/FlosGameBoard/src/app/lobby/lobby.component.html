@@ -1,5 +1,15 @@
+<!--
+  ~ Copyright (c) Florian Plesker
+  -->
+
 <div>{{lobbyInfo.host}}</div>
 <div>{{lobbyInfo.name}}</div>
 <div>{{lobbyInfo.userCount}}</div>
 <div>{{lobbyInfo.type}}</div>
 <div>{{lobbyInfo.id}}</div>
+<div *ngIf="lobbyInfo.host">
+    <button mat-flat-button color="accent" (click)="start()">
+        Start
+    </button>
+</div>
+<button mat-flat-button color="accent" (click)="leaveLobby()">Leave</button>
