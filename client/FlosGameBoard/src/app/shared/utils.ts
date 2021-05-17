@@ -2,13 +2,12 @@
  * Copyright (c) Florian Plesker
  */
 
-import {User} from '../../../../../server/src/Lobby';
-
 export interface LobbyInfo {
     id: number,
     name: string
     host: boolean,
     type: number,
+    playerId: string,
     userCount: number,
     users: UserInfo[],
 }
@@ -28,6 +27,6 @@ export interface ScoreInfo {
 }
 
 export interface RoundWinnerInfo {
-    winner: string,
-    cards: { user: User, card: number }[]
+    winnerId: string,
+    points: number,
 }

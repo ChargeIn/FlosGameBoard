@@ -2,12 +2,26 @@
   ~ Copyright (c) Florian Plesker
   -->
 
-<div class="card-container">
-    <div *ngFor="let card of currentDeck">
-        <app-card (click)="playCard(card)" [value]=card></app-card>
+<div class="player-container">
+    <div *ngFor="let i of opponents">
+        {{players[i].user.name}}: {{players[i].score}}
+        <div *ngIf="players[i].playedCard">
+            Played
+        </div>
+        <div *ngIf="!players[i].playedCard">
+            Not played
+        </div>
     </div>
 </div>
 
-<div *ngIf="currentCard" class="currentCard">
+
+<div *ngIf="currentCard" class="current-card">
     {{currentCard}}
+</div>
+
+
+<div class="card-container">
+    <div class="grid">
+        <app-card *ngFor="let card of currentDeck" (click)="playCard(card)" [value]=card></app-card>
+    </div>
 </div>

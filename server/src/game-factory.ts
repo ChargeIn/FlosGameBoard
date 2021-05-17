@@ -2,7 +2,7 @@
  * Copyright (c) Florian Plesker
  */
 
-import {User} from './Lobby';
+import {User} from './lobby';
 
 export enum GameType {
     WHAT_THE_HECK = 0,
@@ -27,7 +27,7 @@ export class WhatTheHeck {
     private cardDeck: number[] = [];
     private currentCard: number;
     private cardsPlayed: number = 0;
-    private readonly maxCardsPlayable = 14;
+    private readonly maxCardsPlayable = 15;
 
     constructor(users: User[]) {
         this.users = users;
@@ -46,24 +46,26 @@ export class WhatTheHeck {
                 if (this.cards.length === this.users.length) {
                     this.cardsPlayed++;
                     const winner: string | null = this.getWinner();
-                    console.log(winner);
+                    console.log(winner + ' is the winner of round');
                     this.users.forEach(u => {
-                        u.socket.emit('winner', ({winner: winner, points: this.currentCard}));
+                        u.socket.emit('roundWinner', ({winnerId: winner, points: this.currentCard}));
                     });
-                    console.log('after')
                     this.cards = [];
 
                     if (winner) {
                         this.scores[winner] += this.currentCard;
-
                         if (this.cardDeck.length > 0 && this.cardsPlayed < this.maxCardsPlayable) {
                             this.currentCard = this.cardDeck.pop()!;
                             this.users.forEach(user => user.socket.emit('nextCard', this.currentCard));
                         } else {
-                            this.users.forEach(user => user.socket.emit('roundOver', ({scores: this.scores})))
+                            this.users.forEach(user => user.socket.emit('endGame', ({scores: this.scores})));
                         }
                     } else {
-                        this.users.forEach(user => user.socket.emit('draw'))
+                        if (this.cardsPlayed < this.maxCardsPlayable) {
+                            this.users.forEach(user => user.socket.emit('draw'));
+                        } else {
+                            this.users.forEach(user => user.socket.emit('endGame', ({scores: this.scores})));
+                        }
                     }
                 } else {
                     this.users.forEach(u => {
@@ -75,7 +77,7 @@ export class WhatTheHeck {
             user.socket.on('removeCard', () => {
                 this.cards = this.cards.filter(c => c.user.socket.id != user.socket.id);
                 this.users.forEach(u => {
-                    u.socket.emit('removedCard', user.socket.id)
+                    u.socket.emit('cardRemoved', user.socket.id)
                 });
             });
         })
@@ -95,7 +97,7 @@ export class WhatTheHeck {
             return null;
         }
 
-        if (this.currentCard! < 0) {
+        if (this.currentCard! > 0) {
             let i = 0;
 
             while (i < cardCounts.length) {
@@ -120,4 +122,7 @@ export class WhatTheHeck {
         }
     }
 
+    setUsers(users: User[]) {
+        this.users = users;
+    }
 }

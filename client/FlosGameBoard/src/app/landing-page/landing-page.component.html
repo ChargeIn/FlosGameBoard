@@ -3,6 +3,7 @@
   -->
 
 <input type="text" [(ngModel)]="message">
+<input #name type="text" (keyup)="setName(name.value)">
 <button (click)="postMessage()">Submit</button>
 
 <div *ngFor="let message of messages">{{message}}</div>

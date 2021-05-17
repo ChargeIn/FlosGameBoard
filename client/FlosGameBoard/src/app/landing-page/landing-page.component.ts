@@ -30,4 +30,11 @@ export class LandingPageComponent implements OnDestroy {
     postMessage() {
         this.connection.postMessage(this.message);
     }
+
+    setName(name: string) {
+        // need to be checked, because of clear events
+        if (typeof name === 'string') {
+            this.connection.setName(name);
+        }
+    }
 }

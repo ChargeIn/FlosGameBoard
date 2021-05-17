@@ -3,7 +3,7 @@
  */
 
 import {Socket} from 'socket.io';
-import {GameFactory} from './GameFactory';
+import {GameFactory} from './game-factory';
 
 export interface User {
     socket: Socket,
@@ -15,6 +15,7 @@ export interface LobbyInfo {
     name: string
     host: boolean,
     type: number,
+    playerId: string,
     userCount: number,
     users: UserInfo[],
 }
@@ -29,6 +30,7 @@ export class Lobby {
     users: User[] = [];
     host: number;
     game: number = 0;
+    runningGame: any | undefined = undefined;
     name: string;
     id: number;
 
@@ -41,7 +43,7 @@ export class Lobby {
 
         this.users[this.host].socket.on('startGame', () => {
             this.users.forEach(u => u.socket.emit('gameStarted', this.game));
-            GameFactory.getGame(this.game, this.users);
+            setTimeout(() => this.runningGame = GameFactory.getGame(this.game, this.users), 300)
         })
         this.users[this.host].socket.on('changeGame', (i) => {
             this.game = i;
@@ -69,10 +71,7 @@ export class Lobby {
 
         this.users = this.users.filter(u => u.socket.id !== socket.id);
         this.users.forEach(user => user.socket.emit('playerLeft', socket.id));
-    }
-
-    isEmpty() {
-        return this.users.length === 0
+        this.runningGame?.setUsers(this.users);
     }
 
     changeHost(index: number) {
@@ -89,6 +88,7 @@ export class Lobby {
             name: this.name,
             host: this.users[this.host].socket.id === socket.id,
             type: this.game,
+            playerId: socket.id,
             userCount: this.users.length,
             users: this.users.map(u => ({name: u.name, id: u.socket.id})),
         }

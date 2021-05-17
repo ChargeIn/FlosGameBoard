@@ -21,19 +21,18 @@ export class WhatTheHeck extends Game {
 
         this.cardPlayed = socket.fromEvent<PlayedCardInfo>('cardPlayed');
         this.nextCard = socket.fromEvent<number>('nextCard');
-        this.scores = socket.fromEvent<ScoreInfo>('roundOver');
-        this.removedCard = socket.fromEvent<string>('removedCard');
-        this.roundWinner = socket.fromEvent<RoundWinnerInfo>('winner');
+        this.scores = socket.fromEvent<ScoreInfo>('endGame');
+        this.removedCard = socket.fromEvent<string>('cardRemoved');
+        this.roundWinner = socket.fromEvent<RoundWinnerInfo>('roundWinner');
         this.draw = socket.fromEvent<void>('draw');
     }
 
     endGame(socket: Socket) {
         socket.removeAllListeners('cardPlayed');
+        socket.removeAllListeners('cardRemoved');
         socket.removeAllListeners('nextCard');
-        socket.removeAllListeners('roundOver');
-        socket.removeAllListeners('removedCard');
-        socket.removeAllListeners('winner');
-        socket.removeAllListeners('draw');
+        socket.removeAllListeners('roundWinner');
+        socket.removeAllListeners('endGame');
     }
 
     playCard(i: number) {

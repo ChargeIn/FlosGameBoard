@@ -1,3 +1,31 @@
 /*!
  * Copyright (c) Florian Plesker
  */
+.card-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+
+  .grid {
+    margin: 0 auto 2.5%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    max-height: 210px;
+  }
+}
+
+
+.current-card {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}

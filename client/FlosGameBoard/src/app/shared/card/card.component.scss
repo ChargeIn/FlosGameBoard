@@ -1,3 +1,20 @@
 /*!
  * Copyright (c) Florian Plesker
  */
+
+.card {
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  margin: 6px;
+  box-shadow: 0 5px 18px 5px rgba(0, 0, 0, 0.66);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card-inner {
+    font-size: 23px;
+    font-weight: 500;
+  }
+}

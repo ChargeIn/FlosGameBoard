@@ -2,10 +2,30 @@
   ~ Copyright (c) Florian Plesker
   -->
 
-<p>sidenav works!</p>
-<div *ngFor="let lobby of lobbies">
-    <button (click)="joinLobby(lobby.id)">{{lobby.name}}</button>
+<div class="lobbies-container" *ngIf="isNotInLobby()">
+
+    <table class="lobbies-table">
+        <tr>
+            <th>Lobby:</th>
+        </tr>
+        <tr class="lobby-item" *ngFor="let lobby of lobbies">
+            <td>
+                <button
+                        mat-flat-button
+                        matTooltip="Join Lobby"
+                        (click)="joinLobby(lobby.id)"
+                >
+                    Name: {{lobby.name}}
+                    Players: {{lobby.userCount}}</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="lobby-item no-lobby" *ngIf="lobbies.length === 0">
+        No Lobbies open.
+    </div>
+
+    <button class="create-lobby-btn" mat-flat-button color="accent" (click)="createLobby()">Create Room
+        <mat-icon>add</mat-icon>
+    </button>
 </div>
-<button mat-flat-button color="accent" (click)="createLobby()">Create Room
-    <mat-icon>add</mat-icon>
-</button>

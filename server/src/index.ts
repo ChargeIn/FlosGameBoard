@@ -2,8 +2,8 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Lobby, LobbyInfo} from './Lobby';
-import {CreateLobbyRequest, JoinLobbyRequest} from './Request';
+import {Lobby, LobbyInfo} from './lobby';
+import {CreateLobbyRequest, JoinLobbyRequest} from './request';
 import {Socket} from 'socket.io';
 
 const express = require('express');

@@ -16,6 +16,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {SidenavComponent} from './sidenav/sidenav.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import {SidenavComponent} from './sidenav/sidenav.component';
         MatToolbarModule,
         MatIconModule,
         MatSidenavModule,
+        MatTooltipModule,
         SocketIoModule.forRoot(environment.config),
         BrowserAnimationsModule,
     ],

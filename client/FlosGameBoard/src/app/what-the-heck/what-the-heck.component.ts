@@ -5,7 +5,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
 import {WhatTheHeck} from './WhatTheHeck';
-import {UserInfo} from '../shared/utils';
+import {RoundWinnerInfo, ScoreInfo, UserInfo} from '../shared/utils';
 
 @Component({
     selector: 'app-what-the-heck',
@@ -18,12 +18,18 @@ export class WhatTheHeckComponent implements OnInit {
     currentDeck: number[];
     currentCard: number | undefined;
     playedCard: number | null = null;
-    players: { user: UserInfo, playedCard: number | null }[];
+    players: { user: UserInfo, playedCard: number | null, score: number }[];
+    opponents: number[] = [];
 
     constructor(private connection: ConnectionService) {
         this.currentDeck = Array.from({length: 15}, (_, i) => i + 1);
         this.game = this.connection.game as WhatTheHeck;
-        this.players = this.connection.lobby!.users.map(u => ({user: u, playedCard: null}));
+        this.players = this.connection.lobby!.users.map(u => ({user: u, playedCard: null, score: 0}));
+        this.players.forEach((p, i) => {
+            if (p.user.id !== connection.lobby!.playerId) {
+                this.opponents.push(i);
+            }
+        });
 
         this.game.nextCard.subscribe(card => this.currentCard = card);
         this.game.draw.subscribe(() => this.playedCard = null);
@@ -32,8 +38,22 @@ export class WhatTheHeckComponent implements OnInit {
                 if (player.user.id === id) {
                     player.playedCard = null;
                 }
-            })
+            });
         });
+        this.game.roundWinner.subscribe((winnerInfo: RoundWinnerInfo) => {
+            this.playedCard = null;
+            this.players.forEach(p => {
+                if (p.user.id === winnerInfo.winnerId) {
+                    p.score += winnerInfo.points;
+                }
+            })
+        })
+        this.game.scores.subscribe((scoreInfo: ScoreInfo) => {
+            this.currentCard = undefined;
+            this.players.forEach(player => {
+                player.score = scoreInfo.scores[player.user.id];
+            })
+        })
     }
 
     ngOnInit(): void {

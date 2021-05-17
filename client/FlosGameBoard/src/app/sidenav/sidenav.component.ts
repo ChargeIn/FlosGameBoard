@@ -37,4 +37,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     joinLobby(id: number) {
         this.connection.joinLobby('test2', id);
     }
+
+    isNotInLobby() {
+        return this.connection.lobby === null;
+    }
 }

@@ -18,10 +18,11 @@ export class ConnectionService {
     landingChat: Observable<string>;
     lobby: LobbyInfo | null = null;
     game: Game | null = null;
+    name: string = 'A player who forgot to pick a name'
+    id: string = '';
 
     constructor(private socket: Socket, private readonly router: Router) {
         socket.connect();
-
         this.landingChat = this.socket.fromEvent('landingChat');
 
         this.socket.on('joinLobby', (lobbyAck: LobbyInfo) => {
@@ -47,6 +48,10 @@ export class ConnectionService {
 
     postMessage(message: string) {
         this.socket.emit('landingChat', message);
+    }
+
+    setName(name: string) {
+        this.name = name;
     }
 
     getLobbies(): Observable<LobbyInfo[]> {
