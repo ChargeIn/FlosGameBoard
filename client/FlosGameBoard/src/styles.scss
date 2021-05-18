@@ -18,4 +18,16 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 0.8rem;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+
+    &:hover {
+      color: mat-color($mat-accent, 200);
+
+    }
+  }
 }

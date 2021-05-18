@@ -1,6 +1,7 @@
 /*!
  * Copyright (c) Florian Plesker
  */
+@import "../../theme";
 
 .lobbies-container {
   margin: 20px 0;
@@ -29,5 +30,11 @@
 
   .create-lobby-btn {
     max-height: 2.5rem;
+  }
+}
+
+.how-to-play {
+  .description {
+    color: rgb(mat-color($mat-primary, lighter), 0.85);
   }
 }

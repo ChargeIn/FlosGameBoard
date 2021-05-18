@@ -19,6 +19,10 @@ const routes: Routes = [
         canActivate: [WhatTheHeckGuard]
     },
     {
+        path: 'credits',
+        loadChildren: () => import('./credits/credits-routing.module').then(m => m.CreditsRoutingModule)
+    },
+    {
         path: '**',
         loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule)
     }

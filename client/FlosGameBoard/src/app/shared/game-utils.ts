@@ -29,4 +29,12 @@ export class Game {
 
     endGame(_socket: Socket) {
     }
+
+    howToPlay(): string {
+        return '';
+    }
+
+    getName(): string {
+        return '';
+    }
 }

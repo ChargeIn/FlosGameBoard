@@ -29,3 +29,8 @@
         <mat-icon>add</mat-icon>
     </button>
 </div>
+
+<div class="how-to-play" *ngIf="inGame()">
+    <h2>How to play</h2>
+    <div class="description" [innerHTML]="getGameDescription()"></div>
+</div>

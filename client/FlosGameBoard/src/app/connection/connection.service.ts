@@ -9,6 +9,7 @@ import {LobbyInfo, UserInfo} from '../shared/utils';
 import {Game, GameTypes} from '../shared/game-utils'
 import {Router} from '@angular/router';
 import {WhatTheHeck} from '../what-the-heck/WhatTheHeck';
+import {Title} from '@angular/platform-browser';
 
 @Injectable({
     providedIn: 'root'
@@ -21,11 +22,12 @@ export class ConnectionService {
     name: string = 'A player who forgot to pick a name'
     id: string = '';
 
-    constructor(private socket: Socket, private readonly router: Router) {
+    constructor(private socket: Socket, private readonly router: Router, private titleService: Title) {
         socket.connect();
         this.landingChat = this.socket.fromEvent('landingChat');
 
         this.socket.on('joinLobby', (lobbyAck: LobbyInfo) => {
+            this.titleService.setTitle('Lobby: ' + lobbyAck.name);
             this.socket.removeAllListeners('landingPage');
             this.lobby = lobbyAck;
             this.router.navigate(['lobby']);
@@ -70,6 +72,7 @@ export class ConnectionService {
         this.socket.removeAllListeners('gameStarted');
 
         this.socket.emit('leaveLobby', this.lobby!.id);
+        this.titleService.setTitle('Flo\'s Game Board')
         this.lobby = null;
     }
 
@@ -89,6 +92,8 @@ export class ConnectionService {
             default:
                 this.game = new WhatTheHeck(this.socket);
         }
+
+        this.titleService.setTitle('Game: ' + this.game.getName())
 
         this.router.navigate([GameTypes.getGamePath(type)])
     }

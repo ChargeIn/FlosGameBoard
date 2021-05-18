@@ -4,8 +4,8 @@
 
 .card {
   border-radius: 5px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   padding: 10px;
   margin: 6px;
   box-shadow: 0 5px 18px 5px rgba(0, 0, 0, 0.66);
@@ -14,7 +14,7 @@
   justify-content: center;
 
   .card-inner {
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 500;
   }
 }

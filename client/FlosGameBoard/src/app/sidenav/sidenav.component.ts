@@ -41,4 +41,12 @@ export class SidenavComponent implements OnInit, OnDestroy {
     isNotInLobby() {
         return this.connection.lobby === null;
     }
+
+    inGame() {
+        return this.connection.game !== null;
+    }
+
+    getGameDescription() {
+        return this.connection.game?.howToPlay() || 'No description found';
+    }
 }
