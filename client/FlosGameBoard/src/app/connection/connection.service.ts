@@ -19,7 +19,8 @@ export class ConnectionService {
     landingChat: Observable<string>;
     lobby: LobbyInfo | null = null;
     game: Game | null = null;
-    name: string = 'A player who forgot to pick a name'
+    name: string = 'A player who forgot to pick a name';
+    avatar: number = 0;
     id: string = '';
 
     constructor(private socket: Socket, private readonly router: Router, private titleService: Title) {
@@ -72,7 +73,7 @@ export class ConnectionService {
         this.socket.removeAllListeners('gameStarted');
 
         this.socket.emit('leaveLobby', this.lobby!.id);
-        this.titleService.setTitle('Flo\'s Game Board')
+        this.titleService.setTitle('Game Board')
         this.lobby = null;
     }
 

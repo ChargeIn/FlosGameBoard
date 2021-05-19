@@ -1,3 +1,94 @@
 /*!
  * Copyright (c) Florian Plesker
+ *
  */
+@import "../../theme";
+
+.landing-page {
+  width: 100%;
+  height: 100%;
+}
+
+.main-header {
+  position: absolute;
+  top: 30%;
+  right: 30%;
+
+  img {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    right: 0;
+    margin-right: -22px;
+  }
+
+  @media (max-width: 1200px) {
+    top: 10%;
+  }
+}
+
+.info-text {
+  color: lightgray;
+  padding-left: 10px;
+}
+
+.avatar-chooser {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+
+  .avatar {
+    margin: auto auto 0 50px;
+  }
+
+  .choose-btn {
+    position: absolute;
+
+    mat-icon {
+      margin-left: -16px;
+      font-size: 40px;
+      font-weight: 800;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    left: 50%;
+    top: 350px;
+  }
+}
+
+.name-chooser {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, 160px);
+  padding-bottom: 50px;
+
+  input {
+    height: 2rem;
+    width: 15.0rem;
+    border-radius: 20px;
+    border: none;
+    background: rgb(255, 255, 255, 0.1);
+    padding: 0 10px;
+    text-align: center;
+    color: mat-color($mat-accent, lighter);
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    &:focus {
+      outline-color: #ffffff;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    left: 50%;
+    top: 350px;
+  }
+}

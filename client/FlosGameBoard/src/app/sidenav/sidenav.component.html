@@ -2,11 +2,10 @@
   ~ Copyright (c) Florian Plesker
   -->
 
-<div class="lobbies-container" *ngIf="isNotInLobby()">
-
+<div class="lobbies-container" *ngIf="!inGame()">
     <table class="lobbies-table">
         <tr>
-            <th>Lobby:</th>
+            <th>Lobbies:</th>
         </tr>
         <tr class="lobby-item" *ngFor="let lobby of lobbies">
             <td>

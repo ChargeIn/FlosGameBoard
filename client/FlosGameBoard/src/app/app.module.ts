@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {SidenavComponent} from './sidenav/sidenav.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {SidenavService} from './sidenav/sidenav.service';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
         SocketIoModule.forRoot(environment.config),
         BrowserAnimationsModule,
     ],
-    providers: [],
+    providers: [
+        SidenavService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

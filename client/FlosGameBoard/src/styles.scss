@@ -30,4 +30,30 @@ body {
 
     }
   }
+
+  .l-0 {
+    left: 0;
+  }
+
+  .r-0 {
+    right: 0;
+  }
+
+  .b-0 {
+    bottom: 0;
+  }
+
+  .avatar {
+    height: 250px;
+  }
+
+  .avatar-small {
+    height: 50px;
+  }
+
+  .big-accent-header {
+    font-size: 4rem;
+    line-height: 4rem;
+    color: mat-color($mat-accent, 200);
+  }
 }
