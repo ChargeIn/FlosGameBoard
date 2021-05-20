@@ -11,8 +11,8 @@
 
 .main-header {
   position: absolute;
-  top: 30%;
-  right: 30%;
+  top: 40%;
+  right: 22%;
 
   img {
     width: 50px;
@@ -24,8 +24,21 @@
     margin-right: -22px;
   }
 
+  button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 150%);
+  }
+
+  @media (max-width: 1500px) {
+    right: 15%;
+  }
+
   @media (max-width: 1200px) {
     top: 10%;
+    right: 50%;
+    transform: translate(50%, 0);
   }
 }
 
@@ -34,14 +47,28 @@
   padding-left: 10px;
 }
 
-.avatar-chooser {
+
+.character-chooser {
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 30%;
+  left: 20%;
   width: 300px;
-  transform: translate(-50%, -50%);
+  height: 350px;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 1200px) {
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 75px;
+  }
+}
+
+.avatar-chooser {
+  width: 100%;
+  position: relative;
 
   .avatar {
     margin: auto auto 0 50px;
@@ -49,6 +76,7 @@
 
   .choose-btn {
     position: absolute;
+    bottom: 0;
 
     mat-icon {
       margin-left: -16px;
@@ -56,39 +84,13 @@
       font-weight: 800;
     }
   }
-
-  @media (max-width: 1200px) {
-    left: 50%;
-    top: 350px;
-  }
 }
 
 .name-chooser {
-  position: absolute;
-  top: 40%;
-  left: 30%;
-  transform: translate(-50%, 160px);
-  padding-bottom: 50px;
+  margin-top: 40px;
 
   input {
-    height: 2rem;
-    width: 15.0rem;
     border-radius: 20px;
-    border: none;
-    background: rgb(255, 255, 255, 0.1);
-    padding: 0 10px;
-    text-align: center;
-    color: mat-color($mat-accent, lighter);
-    font-size: 1.5rem;
-    font-weight: 800;
-
-    &:focus {
-      outline-color: #ffffff;
-    }
   }
 
-  @media (max-width: 1200px) {
-    left: 50%;
-    top: 350px;
-  }
 }

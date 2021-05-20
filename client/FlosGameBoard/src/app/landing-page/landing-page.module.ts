@@ -20,7 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
         LandingPageRoutingModule,
         FormsModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
     ],
     exports: [
         LandingPageComponent,

@@ -5,7 +5,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
 import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 import {SidenavService} from '../sidenav/sidenav.service';
 
 @Component({
@@ -15,12 +14,10 @@ import {SidenavService} from '../sidenav/sidenav.service';
 })
 export class LandingPageComponent implements OnDestroy {
 
-    message = '';
-    messages: string[] = [];
+    playerName = '';
     private unsubscribe = new Subject<void>();
 
     constructor(private readonly connection: ConnectionService, private readonly sideNav: SidenavService) {
-        this.connection.landingChat.pipe(takeUntil(this.unsubscribe)).subscribe(m => this.messages.push(m))
     }
 
     ngOnDestroy(): void {
@@ -28,14 +25,11 @@ export class LandingPageComponent implements OnDestroy {
         this.unsubscribe.complete();
     }
 
-    postMessage() {
-        this.connection.postMessage(this.message);
-    }
-
     setName(name: string) {
         // need to be checked, because of clear events
         if (typeof name === 'string') {
-            this.connection.setName(name);
+            this.playerName = name.substr(0, 25);
+            this.connection.setName(this.playerName);
         }
     }
 
@@ -44,7 +38,7 @@ export class LandingPageComponent implements OnDestroy {
     }
 
     changeAvatar() {
-        this.connection.avatar = Math.round(Math.random() * 18) + 1;
+        this.connection.avatar = Math.round(Math.random() * 19);
     }
 
     isSmallScreen() {

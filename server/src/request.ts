@@ -3,11 +3,13 @@
  */
 
 export interface JoinLobbyRequest {
-    user: string,
+    userName: string,
+    avatar: number,
     lobbyId: number,
 }
 
 export interface CreateLobbyRequest {
-    user: string,
-    name: string,
+    userName: string,
+    avatar: number,
+    lobbyName: string,
 }

@@ -10,6 +10,7 @@ import {Game, GameTypes} from '../shared/game-utils'
 import {Router} from '@angular/router';
 import {WhatTheHeck} from '../what-the-heck/WhatTheHeck';
 import {Title} from '@angular/platform-browser';
+import {CreateLobbyRequest, JoinLobbyRequest} from '../shared/request';
 
 @Injectable({
     providedIn: 'root'
@@ -62,8 +63,8 @@ export class ConnectionService {
         return this.socket.fromEvent<LobbyInfo[]>('lobbies');
     }
 
-    createLobby(user: string, name: string) {
-        this.socket.emit('createLobby', ({user, name}));
+    createLobby(lobbyName: string) {
+        this.socket.emit('createLobby', ({userName: this.name, lobbyName, avatar: this.avatar} as CreateLobbyRequest));
     }
 
     leaveLobby() {
@@ -77,8 +78,8 @@ export class ConnectionService {
         this.lobby = null;
     }
 
-    joinLobby(user: string, lobbyId: number) {
-        this.socket.emit('joinLobby', ({user, lobbyId}));
+    joinLobby(lobbyId: number) {
+        this.socket.emit('joinLobby', ({userName: this.name, lobbyId, avatar: this.avatar} as JoinLobbyRequest));
     }
 
     startGame(type: number) {

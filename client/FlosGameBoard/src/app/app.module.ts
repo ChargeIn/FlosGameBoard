@@ -18,6 +18,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {SidenavComponent} from './sidenav/sidenav.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {SidenavService} from './sidenav/sidenav.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -35,6 +37,8 @@ import {SidenavService} from './sidenav/sidenav.service';
         MatTooltipModule,
         SocketIoModule.forRoot(environment.config),
         BrowserAnimationsModule,
+        MatDialogModule,
+        FormsModule,
     ],
     providers: [
         SidenavService

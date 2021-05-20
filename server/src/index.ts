@@ -41,9 +41,13 @@ io.on('connection', (socket: Socket) => {
 });
 
 function createNewLobby(lobbyReq: CreateLobbyRequest, socket: Socket): LobbyInfo {
-    console.log(lobbyReq.user + ' created lobby ' + lobbyReq.name)
+    console.log(lobbyReq.userName + ' created lobby ' + lobbyReq.lobbyName)
 
-    const newLobby = new Lobby({name: lobbyReq.user, socket}, lobbyReq.name, lobbies.length);
+    const newLobby = new Lobby({
+        name: lobbyReq.userName,
+        socket,
+        avatar: lobbyReq.avatar
+    }, lobbyReq.lobbyName, lobbies.length);
     lobbies.push(newLobby);
 
     leaveMainChat(socket);
@@ -54,10 +58,10 @@ function createNewLobby(lobbyReq: CreateLobbyRequest, socket: Socket): LobbyInfo
 }
 
 function joinLobby(joinReq: JoinLobbyRequest, socket: Socket): LobbyInfo {
-    console.log(joinReq.user + ' joined lobby ' + joinReq.lobbyId);
+    console.log(joinReq.userName + ' joined lobby ' + joinReq.lobbyId);
 
     const lobby = lobbies[joinReq.lobbyId];
-    lobby.addUser({name: joinReq.user, socket});
+    lobby.addUser({name: joinReq.userName, socket, avatar: joinReq.avatar});
 
     leaveMainChat(socket);
 

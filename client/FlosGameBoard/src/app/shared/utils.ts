@@ -14,6 +14,7 @@ export interface LobbyInfo {
 
 export interface UserInfo {
     name: string,
+    avatar: number,
     id: string,
 }
 

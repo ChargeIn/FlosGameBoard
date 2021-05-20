@@ -1,0 +1,30 @@
+/*
+ * Copyright (c) Florian Plesker
+ */
+@import "../../../theme";
+
+.create-lobby-dialog {
+  position: relative;
+  width: 260px;
+  height: 160px;
+
+  h1 {
+    color: #00d7ff;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  input {
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+
+
+  .button-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+  }
+}

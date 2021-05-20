@@ -10,25 +10,23 @@
         <div class="info-text">
             Please select a avatar and try joining a lobby.
         </div>
-        <button *ngIf="isSmallScreen()" (click)="openLobbies()">Lobbies</button>
+        <button *ngIf="isSmallScreen()" mat-flat-button color="accent" (click)="openLobbies()">Lobbies</button>
     </div>
 
-    <input type="text" [(ngModel)]="message">
-    <button (click)="postMessage()">Submit</button>
+    <div class="character-chooser">
+        <div class="avatar-chooser">
+            <button mat-icon-button class="choose-btn l-0 b-0" (click)="changeAvatar()">
+                <mat-icon color="accent">navigate_before</mat-icon>
+            </button>
+            <img class="avatar" [src]="getAvatar()" alt="avatar">
+            <button mat-icon-button class="choose-btn r-0 b-0" (click)="changeAvatar()">
+                <mat-icon color="accent">navigate_next</mat-icon>
+            </button>
+        </div>
 
-    <div *ngFor="let message of messages">{{message}}</div>
-
-    <div class="avatar-chooser">
-        <button mat-icon-button class="choose-btn l-0 b-0" (click)="changeAvatar()">
-            <mat-icon color="accent">navigate_before</mat-icon>
-        </button>
-        <img class="avatar" [src]="getAvatar()">
-        <button mat-icon-button class="choose-btn r-0 b-0" (click)="changeAvatar()">
-            <mat-icon color="accent">navigate_next</mat-icon>
-        </button>
-    </div>
-
-    <div class="name-chooser">
-        <input #name type="text" placeholder="Name" (keyup)="setName(name.value)">
+        <div class="name-chooser">
+            <input #name type="text" placeholder="Name" [class.warn]="playerName.length >= 25" [(ngModel)]="playerName"
+                   (keyup)="setName(name.value)">
+        </div>
     </div>
 </div>

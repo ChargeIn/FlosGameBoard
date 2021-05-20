@@ -8,6 +8,7 @@ import {GameFactory} from './game-factory';
 export interface User {
     socket: Socket,
     name: string,
+    avatar: number,
 }
 
 export interface LobbyInfo {
@@ -22,6 +23,7 @@ export interface LobbyInfo {
 
 export interface UserInfo {
     id: string,
+    avatar: number,
     name: string
 }
 
@@ -90,7 +92,7 @@ export class Lobby {
             type: this.game,
             playerId: socket.id,
             userCount: this.users.length,
-            users: this.users.map(u => ({name: u.name, id: u.socket.id})),
+            users: this.users.map(u => ({name: u.name, id: u.socket.id, avatar: u.avatar})),
         }
     }
 }

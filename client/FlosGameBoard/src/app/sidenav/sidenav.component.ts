@@ -7,6 +7,8 @@ import {ConnectionService} from '../connection/connection.service';
 import {LobbyInfo} from '../shared/utils';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+import {CreateLobbyDialogComponent} from '../lobby/create-lobby-dialog/create-lobby-dialog.component';
 
 @Component({
     selector: 'app-sidenav',
@@ -17,16 +19,19 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     lobbies: LobbyInfo[] = [];
     private unsubscribe = new Subject<void>();
+    private messages: string[] = [];
+    message = '';
 
-    constructor(private readonly connection: ConnectionService) {
+    constructor(private readonly connection: ConnectionService, private readonly dialog: MatDialog) {
         this.connection.getLobbies().pipe(takeUntil(this.unsubscribe)).subscribe(info => this.lobbies = info);
+        this.connection.landingChat.pipe(takeUntil(this.unsubscribe)).subscribe(m => this.messages.push(m))
     }
 
     ngOnInit(): void {
     }
 
     createLobby(): void {
-        this.connection.createLobby('test', 'test');
+        this.dialog.open(CreateLobbyDialogComponent, {data: {connection: this.connection}});
     }
 
     ngOnDestroy(): void {
@@ -35,7 +40,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     }
 
     joinLobby(id: number) {
-        this.connection.joinLobby('test2', id);
+        this.connection.joinLobby(id);
     }
 
     inGame() {
@@ -45,4 +50,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
     getGameDescription() {
         return this.connection.game?.howToPlay() || 'No description found';
     }
+
+    postMessage() {
+        this.connection.postMessage(this.message);
+    }
+
 }
