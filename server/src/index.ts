@@ -2,9 +2,10 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Lobby, LobbyInfo} from './lobby';
+import {ChatMessage, ChatType, LobbyInfo} from './utlis';
 import {CreateLobbyRequest, JoinLobbyRequest} from './request';
 import {Socket} from 'socket.io';
+import {Lobby} from './lobby';
 
 const express = require('express');
 const http = require('http');
@@ -43,14 +44,14 @@ io.on('connection', (socket: Socket) => {
 function createNewLobby(lobbyReq: CreateLobbyRequest, socket: Socket): LobbyInfo {
     console.log(lobbyReq.userName + ' created lobby ' + lobbyReq.lobbyName)
 
+    leaveMainChat(socket);
+
     const newLobby = new Lobby({
         name: lobbyReq.userName,
         socket,
         avatar: lobbyReq.avatar
     }, lobbyReq.lobbyName, lobbies.length);
     lobbies.push(newLobby);
-
-    leaveMainChat(socket);
 
     mainChat.forEach(socket => socket.emit('lobbies', getLobbies(socket)));
 
@@ -60,10 +61,10 @@ function createNewLobby(lobbyReq: CreateLobbyRequest, socket: Socket): LobbyInfo
 function joinLobby(joinReq: JoinLobbyRequest, socket: Socket): LobbyInfo {
     console.log(joinReq.userName + ' joined lobby ' + joinReq.lobbyId);
 
+    leaveMainChat(socket);
+
     const lobby = lobbies[joinReq.lobbyId];
     lobby.addUser({name: joinReq.userName, socket, avatar: joinReq.avatar});
-
-    leaveMainChat(socket);
 
     return lobby.getInfo(socket)
 }
@@ -110,15 +111,22 @@ function removeUser(socket: Socket) {
 function joinMainChat(socket: Socket) {
     console.log(socket.id + ' joins the main chat');
 
-    socket.on('landingChat', (message) => {
-        console.log(socket.id + ' posted: ' + message);
-        mainChat.forEach(socket => socket.emit('landingChat', message));
-    })
+    socket.emit('chat', {name: '', message: 'You have joined the main chat.', type: ChatType.System})
+
+    socket.on('postMessage', (msg: { name: string, message: string }) => {
+            console.log(socket.id + ':' + msg.name + ' posted: ' + msg.message);
+            mainChat.forEach(user => user.emit('chat', {
+                name: msg.name,
+                message: msg.message,
+                type: socket.id == user.id ? ChatType.Own : ChatType.Normal
+            } as ChatMessage));
+        }
+    )
     mainChat.push(socket);
 }
 
 function leaveMainChat(socket: Socket) {
     console.log(socket.id + ' leaves the main chat');
-    socket.removeAllListeners('landingChat');
+    socket.removeAllListeners('postMessage');
     mainChat = mainChat.filter(s => s.id !== socket.id);
 }

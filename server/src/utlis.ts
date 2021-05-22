@@ -2,6 +2,14 @@
  * Copyright (c) Florian Plesker
  */
 
+import {Socket} from 'socket.io';
+
+export interface User {
+    socket: Socket,
+    name: string,
+    avatar: number,
+}
+
 export interface LobbyInfo {
     id: number,
     name: string
@@ -13,23 +21,9 @@ export interface LobbyInfo {
 }
 
 export interface UserInfo {
-    name: string,
+    id: string,
     avatar: number,
-    id: string,
-}
-
-export interface PlayedCardInfo {
-    id: string,
-    value: number,
-}
-
-export interface ScoreInfo {
-    scores: { [id: string]: number }
-}
-
-export interface RoundWinnerInfo {
-    winnerId: string,
-    points: number,
+    name: string
 }
 
 export interface ChatMessage {

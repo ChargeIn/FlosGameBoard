@@ -19,12 +19,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     lobbies: LobbyInfo[] = [];
     private unsubscribe = new Subject<void>();
-    private messages: string[] = [];
-    message = '';
 
     constructor(private readonly connection: ConnectionService, private readonly dialog: MatDialog) {
         this.connection.getLobbies().pipe(takeUntil(this.unsubscribe)).subscribe(info => this.lobbies = info);
-        this.connection.landingChat.pipe(takeUntil(this.unsubscribe)).subscribe(m => this.messages.push(m))
     }
 
     ngOnInit(): void {
@@ -50,9 +47,4 @@ export class SidenavComponent implements OnInit, OnDestroy {
     getGameDescription() {
         return this.connection.game?.howToPlay() || 'No description found';
     }
-
-    postMessage() {
-        this.connection.postMessage(this.message);
-    }
-
 }

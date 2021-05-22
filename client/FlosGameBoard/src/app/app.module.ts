@@ -15,16 +15,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {SidenavComponent} from './sidenav/sidenav.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import {SidenavService} from './sidenav/sidenav.service';
 import {MatDialogModule} from '@angular/material/dialog';
-import {FormsModule} from '@angular/forms';
+import {SidenavModule} from './sidenav/sidenav.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        SidenavComponent,
     ],
     imports: [
         CommonModule,
@@ -34,11 +31,10 @@ import {FormsModule} from '@angular/forms';
         MatToolbarModule,
         MatIconModule,
         MatSidenavModule,
-        MatTooltipModule,
         SocketIoModule.forRoot(environment.config),
         BrowserAnimationsModule,
         MatDialogModule,
-        FormsModule,
+        SidenavModule
     ],
     providers: [
         SidenavService

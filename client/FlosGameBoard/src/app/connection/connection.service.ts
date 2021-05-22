@@ -5,7 +5,7 @@
 import {Injectable} from '@angular/core';
 import {Socket} from 'ngx-socket-io';
 import {Observable} from 'rxjs';
-import {LobbyInfo, UserInfo} from '../shared/utils';
+import {ChatMessage, LobbyInfo, UserInfo} from '../shared/utils';
 import {Game, GameTypes} from '../shared/game-utils'
 import {Router} from '@angular/router';
 import {WhatTheHeck} from '../what-the-heck/WhatTheHeck';
@@ -17,16 +17,16 @@ import {CreateLobbyRequest, JoinLobbyRequest} from '../shared/request';
 })
 export class ConnectionService {
 
-    landingChat: Observable<string>;
+    chat: Observable<ChatMessage>;
     lobby: LobbyInfo | null = null;
     game: Game | null = null;
-    name: string = 'A player who forgot to pick a name';
+    name: string = 'Unknown';
     avatar: number = 0;
     id: string = '';
 
     constructor(private socket: Socket, private readonly router: Router, private titleService: Title) {
         socket.connect();
-        this.landingChat = this.socket.fromEvent('landingChat');
+        this.chat = this.socket.fromEvent('chat');
 
         this.socket.on('joinLobby', (lobbyAck: LobbyInfo) => {
             this.titleService.setTitle('Lobby: ' + lobbyAck.name);
@@ -51,7 +51,7 @@ export class ConnectionService {
     }
 
     postMessage(message: string) {
-        this.socket.emit('landingChat', message);
+        this.socket.emit('postMessage', {name: this.name, message} as ChatMessage);
     }
 
     setName(name: string) {

@@ -4,28 +4,7 @@
 
 import {Socket} from 'socket.io';
 import {GameFactory} from './game-factory';
-
-export interface User {
-    socket: Socket,
-    name: string,
-    avatar: number,
-}
-
-export interface LobbyInfo {
-    id: number,
-    name: string
-    host: boolean,
-    type: number,
-    playerId: string,
-    userCount: number,
-    users: UserInfo[],
-}
-
-export interface UserInfo {
-    id: string,
-    avatar: number,
-    name: string
-}
+import {ChatMessage, ChatType, LobbyInfo, User, UserInfo} from './utlis';
 
 
 export class Lobby {
@@ -56,10 +35,26 @@ export class Lobby {
     addUser(user: User) {
         this.users.forEach(u => {
             u.socket.emit('playerJoined', {id: user.socket.id, name: user.name} as UserInfo);
+            u.socket.emit('chat', {
+                name: '',
+                message: `Player ${user.name} has joined the lobby`,
+                type: ChatType.System
+            } as ChatMessage);
         })
 
-        user.socket.on('message', (msg) => {
-            this.users.forEach(u => u.socket.emit('lobbyMessage', msg));
+        user.socket.emit('chat', {
+            message: `You have joined the lobby ${this.name}.`,
+            name: user.name,
+            type: ChatType.System
+        } as ChatMessage);
+
+        user.socket.on('postMessage', (msg: { name: string, message: string }) => {
+            console.log(`${user.socket.id}: ${msg.name} posted: ${msg.message}`);
+            this.users.forEach(u => u.socket.emit('chat', {
+                name: msg.name,
+                message: msg.message,
+                type: user.socket.id === u.socket.id ? ChatType.Own : ChatType.Normal
+            } as ChatMessage));
         })
 
         this.users.push(user);

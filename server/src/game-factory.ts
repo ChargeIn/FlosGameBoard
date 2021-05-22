@@ -2,7 +2,7 @@
  * Copyright (c) Florian Plesker
  */
 
-import {User} from './lobby';
+import {User} from './utlis';
 
 export enum GameType {
     WHAT_THE_HECK = 0,
