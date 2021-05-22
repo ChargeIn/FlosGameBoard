@@ -104,8 +104,8 @@ function removeUser(socket: Socket) {
     socket.removeAllListeners();
 
     leaveMainChat(socket);
-
-    toRemove.forEach(i => lobbies = lobbies.filter((_l, j) => j !== i));
+    lobbies = lobbies.filter((_l, i) => toRemove.findIndex((j) => i === j) === -1);
+    mainChat.forEach(socket => socket.emit('lobbies', getLobbies(socket)));
 }
 
 function joinMainChat(socket: Socket) {

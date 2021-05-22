@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright (c) Florian Plesker
+  -->
+<div class="lobbies-container">
+    <h2>Lobbies:</h2>
+    <div class="table-wrapper">
+        <table class="lobbies-table">
+            <tr class="lobby-item" *ngFor="let lobby of lobbies">
+                <td>
+                    <button
+                            mat-flat-button
+                            matTooltip="Join Lobby"
+                            (click)="joinLobby(lobby.id)"
+                    >
+                        <span class="lobby-name">{{lobby.name}}</span>
+                        <span class="lobby-counter">({{lobby.userCount}}/5)</span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="lobby-item no-lobby" *ngIf="lobbies.length === 0">
+        No Lobbies open.
+    </div>
+
+    <button class="create-lobby-btn" mat-flat-button color="accent" (click)="createLobby()">Create Room</button>
+</div>

@@ -27,7 +27,7 @@ export class CreateLobbyDialogComponent implements OnInit {
     }
 
     createLobby() {
-        this.data.connection.createLobby(this.lobbyName)
+        this.data.connection.createLobby(this.lobbyName.length === 0 ? 'No Name' : this.lobbyName)
         this.dialogRef.close();
     }
 

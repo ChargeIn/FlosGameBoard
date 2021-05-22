@@ -1,38 +1,27 @@
 <!--
   ~ Copyright (c) Florian Plesker
   -->
+<div class="sidenav-content">
 
-<div class="lobbies-container" *ngIf="!inGame()">
-    <table class="lobbies-table">
-        <tr>
-            <th>Lobbies:</th>
-        </tr>
-        <tr class="lobby-item" *ngFor="let lobby of lobbies">
-            <td>
-                <button
-                        mat-flat-button
-                        matTooltip="Join Lobby"
-                        (click)="joinLobby(lobby.id)"
-                >
-                    <span class="lobby-name">{{lobby.name}}</span>
-                    <span class="lobby-counter">({{lobby.userCount}}/6)</span>
-                </button>
-            </td>
-        </tr>
-    </table>
+    <app-lobby-info *ngIf="currentTab === 'Lobby'" [lobbies]="lobbies"></app-lobby-info>
 
-    <div class="lobby-item no-lobby" *ngIf="lobbies.length === 0">
-        No Lobbies open.
+    <div *ngIf="currentTab === 'HowToPlay'" class="how-to-play">
+        <h2>How to play</h2>
+        <div class="description" [innerHTML]="getGameDescription()"></div>
     </div>
 
-    <button class="create-lobby-btn" mat-flat-button color="accent" (click)="createLobby()">Create Room
-        <mat-icon>add</mat-icon>
-    </button>
+    <app-chat *ngIf="currentTab === 'Chat'"></app-chat>
+
 </div>
 
-<div class="how-to-play" *ngIf="inGame()">
-    <h2>How to play</h2>
-    <div class="description" [innerHTML]="getGameDescription()"></div>
-</div>
-
-<app-chat></app-chat>
+<mat-button-toggle-group class="sidenav-toolbar" [(value)]="currentTab" name="tabs" aria-label="Sidenav Tabs">
+    <mat-button-toggle value="Lobby" matTooltip="Lobby">
+        <mat-icon>group</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="Chat" matTooltip="Chat">
+        <mat-icon>chat</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle [disabled]="!inGame()" value="HowToPlay" matTooltip="How to play">
+        <mat-icon>help_outline</mat-icon>
+    </mat-button-toggle>
+</mat-button-toggle-group>

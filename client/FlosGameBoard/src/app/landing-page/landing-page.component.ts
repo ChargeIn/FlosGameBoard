@@ -38,7 +38,13 @@ export class LandingPageComponent implements OnDestroy {
     }
 
     changeAvatar() {
-        this.connection.avatar = Math.round(Math.random() * 19);
+        let next = Math.round(Math.random() * 19);
+
+        while (next === this.connection.avatar) {
+            next = Math.round(Math.random() * 19);
+        }
+
+        this.connection.avatar = next;
     }
 
     isSmallScreen() {

@@ -3,56 +3,36 @@
  */
 @import "../../theme";
 
-.lobbies-container {
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+$toolbar-height: 40px;
 
-  .lobbies-table {
-    width: 100%;
-    text-align: left;
-    padding: 10px 20px;
+.how-to-play {
+  padding: 10px;
 
-    th:last-of-type {
-      padding-bottom: 10px;
-    }
-  }
-
-  .lobby-item {
-    padding-bottom: 20px;
-
-    button {
-      min-width: 100%;
-      margin: 0;
-
-      &:first-child {
-        display: block;
-        width: 100%;
-      }
-
-      .lobby-name {
-        float: left;
-      }
-
-      .lobby-counter {
-        float: right;
-      }
-    }
-  }
-
-  .no-lobby {
-    text-align: center;
-  }
-
-  .create-lobby-btn {
-    max-height: 2.5rem;
+  .description {
+    color: rgb(mat-color($mat-primary, lighter), 0.85);
   }
 }
 
-.how-to-play {
-  .description {
-    color: rgb(mat-color($mat-primary, lighter), 0.85);
+.sidenav-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: $toolbar-height;
+  overflow-y: auto;
+
+  overflow-x: hidden;
+}
+
+.sidenav-toolbar {
+  position: absolute;
+  bottom: 0;
+  height: $toolbar-height;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+
+  mat-button-toggle {
+    flex-grow: 1;
   }
 }

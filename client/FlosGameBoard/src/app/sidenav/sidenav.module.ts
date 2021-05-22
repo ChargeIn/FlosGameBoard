@@ -11,19 +11,25 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
 import {ChatComponent} from './chat/chat.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { LobbyInfoComponent } from './lobby-info/lobby-info.component';
 
 
 @NgModule({
     declarations: [
         SidenavComponent,
         ChatComponent,
+        LobbyInfoComponent,
     ],
     imports: [
         CommonModule,
         MatButtonModule,
         MatTooltipModule,
         MatIconModule,
-        FormsModule
+        FormsModule,
+        MatToolbarModule,
+        MatButtonToggleModule
     ],
     exports: [
         SidenavComponent
