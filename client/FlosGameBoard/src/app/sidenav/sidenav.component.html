@@ -10,18 +10,18 @@
         <div class="description" [innerHTML]="getGameDescription()"></div>
     </div>
 
-    <app-chat *ngIf="currentTab === 'Chat'"></app-chat>
+    <app-chat *ngIf="currentTab === 'Chat'" [messages]="messages"></app-chat>
 
 </div>
 
 <mat-button-toggle-group class="sidenav-toolbar" [(value)]="currentTab" name="tabs" aria-label="Sidenav Tabs">
-    <mat-button-toggle value="Lobby" matTooltip="Lobby">
+    <mat-button-toggle class="sidenav-tab-button" value="Lobby" matTooltip="Lobby">
         <mat-icon>group</mat-icon>
     </mat-button-toggle>
-    <mat-button-toggle value="Chat" matTooltip="Chat">
+    <mat-button-toggle class="sidenav-tab-button" value="Chat" matTooltip="Chat">
         <mat-icon>chat</mat-icon>
     </mat-button-toggle>
-    <mat-button-toggle [disabled]="!inGame()" value="HowToPlay" matTooltip="How to play">
+    <mat-button-toggle class="sidenav-tab-button" [disabled]="!inGame()" value="HowToPlay" matTooltip="How to play">
         <mat-icon>help_outline</mat-icon>
     </mat-button-toggle>
 </mat-button-toggle-group>

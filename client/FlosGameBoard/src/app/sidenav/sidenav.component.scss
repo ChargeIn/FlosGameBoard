@@ -3,7 +3,7 @@
  */
 @import "../../theme";
 
-$toolbar-height: 40px;
+$toolbar-height: 32px;
 
 .how-to-play {
   padding: 10px;
@@ -32,7 +32,11 @@ $toolbar-height: 40px;
   right: 0;
   border-radius: 0;
 
-  mat-button-toggle {
+  .mat-button-toggle {
     flex-grow: 1;
+
+    ::ng-deep .mat-button-toggle-label-content {
+      line-height: $toolbar-height;
+    }
   }
 }

@@ -3,11 +3,18 @@
   -->
 
 <div class="chat-container">
-    <div class="chat-message" *ngFor="let msg of messages" [class.your-msg]="isOwnMessage(msg.type)">
-        <span *ngIf="isNormalMessage(msg.type)">{{msg.name}}: </span>
-        <span>{{msg.message}}</span>
+    <div class="chat-message" *ngFor="let msg of messages" [class.own-msg]="isOwnMessage(msg.type)"
+         [class.system-msg]="isSystemMessage(msg.type)">
+        <div class="chat-message-wrapper">
+            <span *ngIf="isNormalMessage(msg.type)">{{msg.name}}: </span>
+            <span>{{msg.message}}</span>
+        </div>
     </div>
 </div>
 
-<input type="text" [(ngModel)]="message" (keyup.enter)="postMessage()">
-<button (click)="postMessage()">Submit</button>
+<div class="chat-input-bar">
+    <input type="text" [(ngModel)]="message" (keyup.enter)="postMessage()">
+    <button mat-flat-button (click)="postMessage()">
+        Send
+    </button>
+</div>

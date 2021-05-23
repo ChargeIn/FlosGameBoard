@@ -69,7 +69,8 @@ body {
     font-weight: 800;
 
     &:focus {
-      outline-color: #ffffff;
+      outline: none;
+      box-shadow: 0 0 3px beige;
     }
   }
 
@@ -84,4 +85,26 @@ body {
   .warn {
     color: var(--warn-darker-color);
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #9da2a7;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3e5a76;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4158;
 }

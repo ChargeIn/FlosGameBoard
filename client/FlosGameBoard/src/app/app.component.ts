@@ -15,10 +15,10 @@ export class AppComponent {
 
     @ViewChild('sidenav', {static: false}) sideNav: MatSidenav | undefined;
 
-    title = 'FlosGameBoard';
+    title = 'GameBoard';
     showSideNav = window.innerWidth > 1200;
 
     constructor(private readonly sidenavService: SidenavService) {
-        sidenavService.showSideNav.subscribe(() => this.sideNav?.toggle());
+        sidenavService.onShowLobbies.subscribe(() => this.sideNav?.toggle(true));
     }
 }

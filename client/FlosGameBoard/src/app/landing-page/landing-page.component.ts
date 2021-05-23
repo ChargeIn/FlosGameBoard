@@ -52,6 +52,6 @@ export class LandingPageComponent implements OnDestroy {
     }
 
     openLobbies() {
-        this.sideNav.toggleSideNav();
+        this.sideNav.showLobbies();
     }
 }

@@ -4,9 +4,10 @@
 
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
-import {LobbyInfo} from '../shared/utils';
+import {ChatMessage, LobbyInfo} from '../shared/utils';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {SidenavService} from './sidenav.service';
 
 type Tab = 'Chat' | 'HowToPlay' | 'Lobby';
 
@@ -18,11 +19,20 @@ type Tab = 'Chat' | 'HowToPlay' | 'Lobby';
 export class SidenavComponent implements OnInit, OnDestroy {
 
     lobbies: LobbyInfo[] = [];
+    messages: ChatMessage[] = [];
     private unsubscribe = new Subject<void>();
     currentTab: Tab = 'Lobby';
 
-    constructor(private readonly connection: ConnectionService) {
+    constructor(private readonly connection: ConnectionService, private readonly navService: SidenavService) {
         this.connection.getLobbies().pipe(takeUntil(this.unsubscribe)).subscribe(info => this.lobbies = info);
+
+        this.connection.chat.pipe(takeUntil(this.unsubscribe)).subscribe(msg => {
+            this.messages.push(msg);
+            const length = this.messages.length;
+            this.messages = this.messages.filter((_m, i) => length - i < 30);
+        });
+
+        this.navService.onShowLobbies.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.currentTab = 'Lobby');
     }
 
     ngOnInit(): void {

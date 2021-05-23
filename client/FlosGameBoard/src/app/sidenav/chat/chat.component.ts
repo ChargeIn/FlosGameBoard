@@ -2,9 +2,8 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Component, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy} from '@angular/core';
 import {ConnectionService} from '../../connection/connection.service';
-import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ChatMessage, ChatType} from '../../shared/utils';
 
@@ -15,16 +14,11 @@ import {ChatMessage, ChatType} from '../../shared/utils';
 })
 export class ChatComponent implements OnDestroy {
 
-    messages: ChatMessage[] = [];
+    @Input() messages: ChatMessage[] = [];
     message = '';
     unsubscribe = new Subject<void>();
 
     constructor(private readonly connection: ConnectionService) {
-        this.connection.chat.pipe(takeUntil(this.unsubscribe)).subscribe(msg => {
-            this.messages.push(msg);
-            const length = this.messages.length;
-            this.messages = this.messages.filter((_m, i) => length - i < 30);
-        });
     }
 
     ngOnDestroy(): void {
@@ -32,8 +26,10 @@ export class ChatComponent implements OnDestroy {
         this.unsubscribe.complete();
     }
 
-
     postMessage() {
+        if (this.message.length === 0) {
+            return;
+        }
         this.connection.postMessage(this.message);
         this.message = '';
     }
@@ -46,7 +42,7 @@ export class ChatComponent implements OnDestroy {
         return ChatType.Normal === type;
     }
 
-    keyDown($event: KeyboardEvent) {
-        console.log($event)
+    isSystemMessage(type: ChatType) {
+        return ChatType.System === type;
     }
 }
