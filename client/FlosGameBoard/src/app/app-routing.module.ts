@@ -10,7 +10,7 @@ import {WhatTheHeckGuard} from './what-the-heck/what-the-heck.guard';
 const routes: Routes = [
     {
         path: 'lobby',
-        loadChildren: () => import('./lobby/lobby.module').then(m => m.LobbyModule),
+        loadChildren: () => import('./lobby/lobby-routing.module').then(m => m.LobbyRoutingModule),
         canActivate: [LobbyGuard]
     },
     {

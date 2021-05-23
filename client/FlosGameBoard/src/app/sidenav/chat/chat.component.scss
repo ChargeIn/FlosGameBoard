@@ -21,7 +21,7 @@ $chat-input-height: 2rem;
     .chat-message-wrapper {
       display: inline-block;
       padding: 5px 10px;
-      margin: 5px 0px;
+      margin: 5px 0;
       border-radius: 6px;
       background: var(--primary-color);
     }
@@ -46,15 +46,16 @@ $chat-input-height: 2rem;
 
 .chat-input-bar {;
   position: absolute;
-  bottom: 8px;
+  bottom: 4px;
   height: $chat-input-height;
-  left: 10px;
-  right: 10px;
+  left: 2px;
+  right: 2px;
   display: flex;
   justify-content: center;
   overflow: visible;
 
   input {
+    margin-bottom: -4px;
     width: 100%;
     border-radius: 0;
     font-size: 1rem;

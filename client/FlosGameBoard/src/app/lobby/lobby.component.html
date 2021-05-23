@@ -2,14 +2,27 @@
   ~ Copyright (c) Florian Plesker
   -->
 
-<div>{{lobbyInfo.host}}</div>
-<div>{{lobbyInfo.name}}</div>
-<div>{{lobbyInfo.userCount}}</div>
-<div>{{lobbyInfo.type}}</div>
-<div>{{lobbyInfo.id}}</div>
-<div *ngIf="lobbyInfo.host">
-    <button mat-flat-button color="accent" (click)="start()">
-        Start
-    </button>
+<div class="lobby-wrapper">
+    <div class="lobby-info-container">
+        <div class="lobby-item">{{lobbyInfo.name}}</div>
+        <div class="lobby-item">{{lobbyInfo.userCount}}</div>
+        <div class="lobby-item">{{lobbyInfo.type}}</div>
+        <div class="lobby-item">{{lobbyInfo.id}}</div>
+    </div>
+
+    <div class="lobby-users-container">
+        <div class="user-container" *ngFor="let user of lobbyInfo.users">
+            <div class="user-avatar-container">
+                <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png">
+            </div>
+            <div class="user-name">{{user.name}}</div>
+        </div>
+    </div>
+
+    <div class="lobby-button-wrapper">
+        <button *ngIf="lobbyInfo.host" mat-flat-button (click)="start()">
+            Start
+        </button>
+        <button mat-flat-button (click)="leaveLobby()">Leave</button>
+    </div>
 </div>
-<button mat-flat-button color="accent" (click)="leaveLobby()">Leave</button>

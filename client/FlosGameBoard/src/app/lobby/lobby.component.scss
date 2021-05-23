@@ -1,3 +1,59 @@
 /*!
  * Copyright (c) Florian Plesker
  */
+
+.lobby-wrapper {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  border-radius: 10px;
+  background: linear-gradient(140deg, var(--accent-darker-color), #109a5a);
+
+  .lobby-info-container {
+    position: absolute;
+    top: 15px;
+    bottom: 15px;
+    left: 15px;
+    width: 30%;
+  }
+
+  .lobby-users-container {
+    position: absolute;
+    top: 15px;
+    bottom: 75px;
+    left: 35%;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+
+    .user-container {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .user-avatar-container {
+      height: 100%;
+      width: 50px;
+    }
+
+    .user-avatar {
+      height: 40px;
+    }
+  }
+
+  .lobby-button-wrapper {
+    position: absolute;
+    right: 15px;
+    left: 15px;
+    bottom: 15px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
