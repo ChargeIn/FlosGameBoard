@@ -4,8 +4,7 @@
 
 import {Socket} from 'socket.io';
 import {GameFactory} from './game-factory';
-import {ChatMessage, ChatType, LobbyInfo, User, UserInfo} from './utlis';
-
+import {ChatMessage, ChatType, LobbyInfo, LobbyInfoSmall, User, UserInfo} from './utlis';
 
 export class Lobby {
     users: User[] = [];
@@ -14,7 +13,6 @@ export class Lobby {
     runningGame: any | undefined = undefined;
     name: string;
     id: number;
-
 
     constructor(user: User, name: string, id: number) {
         this.host = 0;
@@ -34,11 +32,11 @@ export class Lobby {
 
     addUser(user: User) {
         this.users.forEach(u => {
-            u.socket.emit('playerJoined', {id: user.socket.id, name: user.name} as UserInfo);
+            u.socket.emit('playerJoined', {id: user.socket.id, name: user.name, avatar: user.avatar} as UserInfo);
             u.socket.emit('chat', {
                 name: '',
                 message: `Player ${user.name} has joined the lobby`,
-                type: ChatType.System
+                type: ChatType.System,
             } as ChatMessage);
         })
 
@@ -87,6 +85,14 @@ export class Lobby {
             playerId: socket.id,
             userCount: this.users.length,
             users: this.users.map(u => ({name: u.name, id: u.socket.id, avatar: u.avatar})),
+        }
+    }
+
+    getSmallInfo(): LobbyInfoSmall {
+        return {
+            id: this.id,
+            name: this.name,
+            userCount: this.users.length,
         }
     }
 }

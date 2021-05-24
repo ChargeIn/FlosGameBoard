@@ -11,6 +11,7 @@
     </div>
 
     <div class="lobby-users-container">
+        <h3>Players ({{lobbyInfo.users.length}}/6)</h3>
         <div class="user-container" *ngFor="let user of lobbyInfo.users">
             <div class="user-avatar-container">
                 <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png">

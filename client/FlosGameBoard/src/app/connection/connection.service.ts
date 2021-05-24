@@ -5,7 +5,7 @@
 import {Injectable} from '@angular/core';
 import {Socket} from 'ngx-socket-io';
 import {Observable} from 'rxjs';
-import {ChatMessage, LobbyInfo, UserInfo} from '../shared/utils';
+import {ChatMessage, LobbyInfo, LobbyInfoSmall, UserInfo} from '../shared/utils';
 import {Game, GameTypes} from '../shared/game-utils'
 import {Router} from '@angular/router';
 import {WhatTheHeck} from '../what-the-heck/WhatTheHeck';
@@ -58,9 +58,9 @@ export class ConnectionService {
         this.name = name;
     }
 
-    getLobbies(): Observable<LobbyInfo[]> {
+    getLobbies(): Observable<LobbyInfoSmall[]> {
         this.socket.emit('getLobbies');
-        return this.socket.fromEvent<LobbyInfo[]>('lobbies');
+        return this.socket.fromEvent<LobbyInfoSmall[]>('lobbies');
     }
 
     createLobby(lobbyName: string) {

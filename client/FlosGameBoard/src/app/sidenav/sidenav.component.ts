@@ -4,7 +4,7 @@
 
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
-import {ChatMessage, LobbyInfo} from '../shared/utils';
+import {ChatMessage, LobbyInfoSmall} from '../shared/utils';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {SidenavService} from './sidenav.service';
@@ -18,7 +18,7 @@ type Tab = 'Chat' | 'HowToPlay' | 'Lobby';
 })
 export class SidenavComponent implements OnInit, OnDestroy {
 
-    lobbies: LobbyInfo[] = [];
+    lobbies: LobbyInfoSmall[] = [];
     messages: ChatMessage[] = [];
     private unsubscribe = new Subject<void>();
     currentTab: Tab = 'Lobby';

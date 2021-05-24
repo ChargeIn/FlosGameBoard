@@ -20,6 +20,12 @@ export interface LobbyInfo {
     users: UserInfo[],
 }
 
+export interface LobbyInfoSmall {
+    id: number,
+    name: string,
+    userCount: number,
+}
+
 export interface UserInfo {
     id: string,
     avatar: number,

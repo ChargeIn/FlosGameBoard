@@ -3,7 +3,7 @@
  */
 
 import {Component, Input, OnInit} from '@angular/core';
-import {LobbyInfo} from '../../shared/utils';
+import {LobbyInfoSmall} from '../../shared/utils';
 import {ConnectionService} from '../../connection/connection.service';
 import {CreateLobbyDialogComponent} from '../../lobby/create-lobby-dialog/create-lobby-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -15,7 +15,7 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class LobbyInfoComponent implements OnInit {
 
-    @Input() lobbies: LobbyInfo[] = [];
+    @Input() lobbies: LobbyInfoSmall[] = [];
 
     constructor(private readonly connection: ConnectionService, private readonly dialog: MatDialog) {
     }
@@ -24,6 +24,10 @@ export class LobbyInfoComponent implements OnInit {
     }
 
     joinLobby(id: number) {
+        if (this.lobbies[id].userCount > 4) {
+            return
+        }
+
         this.connection.joinLobby(id);
     }
 
