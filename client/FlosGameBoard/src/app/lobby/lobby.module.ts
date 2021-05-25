@@ -8,6 +8,8 @@ import {LobbyComponent} from './lobby.component';
 import {MatButtonModule} from '@angular/material/button';
 import {CreateLobbyDialogComponent} from './create-lobby-dialog/create-lobby-dialog.component';
 import {FormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import {FormsModule} from '@angular/forms';
     imports: [
         CommonModule,
         MatButtonModule,
-        FormsModule
+        FormsModule,
+        MatFormFieldModule,
+        MatSelectModule
     ],
     providers: [],
     exports: [

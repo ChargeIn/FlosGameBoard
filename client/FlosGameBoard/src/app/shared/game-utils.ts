@@ -8,12 +8,21 @@ export class GameTypes {
 
     static WHAT_THE_HECK = 0;
 
-    static getGamePath(id: number) {
-        switch (id) {
+    static getGamePath(type: number) {
+        switch (type) {
             case 0:
                 return 'what-the-heck';
             default:
                 return 'what-the-heck';
+        }
+    }
+
+    static getName(type: number) {
+        switch (type) {
+            case 0:
+                return 'What the Heck';
+            default:
+                return 'What the Heck';
         }
     }
 

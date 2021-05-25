@@ -20,5 +20,11 @@ export class AppComponent {
 
     constructor(private readonly sidenavService: SidenavService) {
         sidenavService.onShowLobbies.subscribe(() => this.sideNav?.toggle(true));
+        sidenavService.closeSideNav.subscribe(() => {
+                if (!this.showSideNav) {
+                    this.sideNav?.toggle(false);
+                }
+            }
+        );
     }
 }

@@ -3,20 +3,38 @@
   -->
 
 <div class="lobby-wrapper">
-    <div class="lobby-info-container">
-        <div class="lobby-item">{{lobbyInfo.name}}</div>
-        <div class="lobby-item">{{lobbyInfo.userCount}}</div>
-        <div class="lobby-item">{{lobbyInfo.type}}</div>
-        <div class="lobby-item">{{lobbyInfo.id}}</div>
-    </div>
 
     <div class="lobby-users-container">
-        <h3>Players ({{lobbyInfo.users.length}}/6)</h3>
+        <div class="title">Players</div>
         <div class="user-container" *ngFor="let user of lobbyInfo.users">
             <div class="user-avatar-container">
-                <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png">
+                <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png" alt="avatar">
             </div>
             <div class="user-name">{{user.name}}</div>
+        </div>
+    </div>
+
+    <div class="lobby-info-container">
+        <div class="title">Lobby "{{lobbyInfo.name}}"</div>
+        <div class="lobby-items">
+            <div class="lobby-item">
+                <div class="label">Players</div>
+                <div class="value">{{lobbyInfo.userCount}} / 5</div>
+            </div>
+
+            <div class="lobby-item">
+                <div class="label">Game</div>
+                <div class="value">
+                    <mat-form-field *ngIf="lobbyInfo.host">
+                        <mat-select value="0" (selectionChange)="onGameChange($event.value)">
+                            <mat-option value="0">What the Heck</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div *ngIf="!lobbyInfo.host">
+                        {{getGame()}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

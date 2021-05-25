@@ -4,29 +4,49 @@
 
 .lobby-wrapper {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  bottom: 10%;
+  top: 15%;
+  left: 15%;
+  right: 15%;
+  bottom: 15%;
   border-radius: 10px;
   background: linear-gradient(140deg, var(--accent-darker-color), #109a5a);
 
   .lobby-info-container {
     position: absolute;
     top: 15px;
-    bottom: 15px;
-    left: 15px;
-    width: 30%;
+    bottom: 75px;
+    left: 30%;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 10px 10px 80px;
+    background: var(--primary-color-see-through);
+
+    .lobby-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 50px;
+      align-items: center;
+      font-weight: 500;
+    }
   }
 
   .lobby-users-container {
     position: absolute;
     top: 15px;
-    bottom: 75px;
-    left: 35%;
-    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    width: 30%;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    background: var(--primary-color-see-through);
+
 
     .user-container {
       height: 50px;
@@ -34,6 +54,10 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      font-weight: 500;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: 10px 0;
     }
 
     .user-avatar-container {
@@ -42,7 +66,11 @@
     }
 
     .user-avatar {
-      height: 40px;
+      height: 50px;
+    }
+
+    .user-name {
+      padding-bottom: 8px;
     }
   }
 
@@ -55,5 +83,15 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+  }
+
+  .title {
+    text-shadow: 1px 1px 4px var(--primary-color),
+    1px -1px 4px var(--primary-color),
+    -1px 1px 4px var(--primary-color),
+    1px 1px 4px var(--primary-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
   }
 }

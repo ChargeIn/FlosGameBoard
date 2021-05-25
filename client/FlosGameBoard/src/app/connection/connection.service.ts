@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 import {WhatTheHeck} from '../what-the-heck/WhatTheHeck';
 import {Title} from '@angular/platform-browser';
 import {CreateLobbyRequest, JoinLobbyRequest} from '../shared/request';
+import {SidenavService} from '../sidenav/sidenav.service';
 
 @Injectable({
     providedIn: 'root'
@@ -24,11 +25,12 @@ export class ConnectionService {
     avatar: number = 0;
     id: string = '';
 
-    constructor(private socket: Socket, private readonly router: Router, private titleService: Title) {
+    constructor(private socket: Socket, private readonly router: Router, private titleService: Title, private readonly sideNav: SidenavService) {
         socket.connect();
         this.chat = this.socket.fromEvent('chat');
 
         this.socket.on('joinLobby', (lobbyAck: LobbyInfo) => {
+            this.sideNav.close();
             this.titleService.setTitle('Lobby: ' + lobbyAck.name);
             this.socket.removeAllListeners('landingPage');
             this.lobby = lobbyAck;
@@ -46,7 +48,12 @@ export class ConnectionService {
 
             this.socket.on('changeHost', (host: boolean) => this.lobby!.host = host);
 
-            this.socket.on('gameStarted', (type: number) => this.loadGame(type))
+            this.socket.on('gameStarted', (type: number) => this.loadGame(type));
+
+            this.socket.on('changeGame', (type: number) => {
+                console.log(type);
+                this.lobby!.type = type
+            })
         });
     }
 
@@ -98,5 +105,9 @@ export class ConnectionService {
         this.titleService.setTitle('Game: ' + this.game.getName())
 
         this.router.navigate([GameTypes.getGamePath(type)])
+    }
+
+    changeGame(type: number) {
+        this.socket.emit('changeGame', type);
     }
 }

@@ -6,6 +6,7 @@ import {Component, OnInit} from '@angular/core';
 import {ConnectionService} from '../connection/connection.service';
 import {LobbyInfo} from '../shared/utils';
 import {Router} from '@angular/router';
+import {GameTypes} from '../shared/game-utils';
 
 @Component({
     selector: 'app-lobby',
@@ -30,5 +31,14 @@ export class LobbyComponent implements OnInit {
     leaveLobby() {
         this.connection.leaveLobby();
         this.router.navigate(['/']);
+    }
+
+    onGameChange(type: number) {
+        this.connection.changeGame(type);
+    }
+
+    getGame() {
+        console.log(this.lobbyInfo.type)
+        return GameTypes.getName(this.lobbyInfo.type);
     }
 }

@@ -11,6 +11,7 @@ import {Subject} from 'rxjs';
 export class SidenavService implements OnDestroy {
 
     onShowLobbies = new Subject<void>();
+    closeSideNav = new Subject<void>();
 
     constructor() {
     }
@@ -21,5 +22,10 @@ export class SidenavService implements OnDestroy {
 
     ngOnDestroy(): void {
         this.onShowLobbies.complete();
+        this.closeSideNav.complete();
+    }
+
+    close() {
+        this.closeSideNav.next();
     }
 }
