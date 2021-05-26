@@ -6,22 +6,28 @@
   position: absolute;
   top: 15%;
   left: 15%;
-  right: 15%;
-  bottom: 15%;
+  width: 70%;
+
   border-radius: 10px;
   background: linear-gradient(140deg, var(--accent-darker-color), #109a5a);
 
+  .lobby-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+  }
+
   .lobby-info-container {
-    position: absolute;
-    top: 15px;
-    bottom: 75px;
-    left: 30%;
-    right: 15px;
+    position: relative;
+    float: left;
+    flex-grow: 2;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     padding: 20px;
-    margin: 10px 10px 10px 80px;
+    margin: 10px;
     background: var(--primary-color-see-through);
 
     .lobby-item {
@@ -35,11 +41,9 @@
   }
 
   .lobby-users-container {
-    position: absolute;
-    top: 15px;
-    bottom: 15px;
-    left: 15px;
-    width: 30%;
+    position: relative;
+    float: left;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -75,14 +79,16 @@
   }
 
   .lobby-button-wrapper {
-    position: absolute;
-    right: 15px;
-    left: 15px;
-    bottom: 15px;
-    height: 50px;
+    position: relative;
+    height: auto;
+    margin: 10px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+
+    button {
+      margin-left: 10px;
+    }
   }
 
   .title {
