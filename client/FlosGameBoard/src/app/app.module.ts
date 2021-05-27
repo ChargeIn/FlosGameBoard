@@ -8,7 +8,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CommonModule} from '@angular/common';
-import {SocketIoModule} from 'ngx-socket-io';
 import {environment} from '../environments/environment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,6 +17,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {SidenavService} from './sidenav/sidenav.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {SidenavModule} from './sidenav/sidenav.module';
+import {SocketIoModule} from './connection/socket/socket-io.module';
 
 @NgModule({
     declarations: [
@@ -34,7 +34,7 @@ import {SidenavModule} from './sidenav/sidenav.module';
         SocketIoModule.forRoot(environment.config),
         BrowserAnimationsModule,
         MatDialogModule,
-        SidenavModule
+        SidenavModule,
     ],
     providers: [
         SidenavService

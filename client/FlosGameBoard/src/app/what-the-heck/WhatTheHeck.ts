@@ -4,8 +4,8 @@
 
 import {Observable} from 'rxjs';
 import {PlayedCardInfo, RoundWinnerInfo, ScoreInfo} from '../shared/utils';
-import {Socket} from 'ngx-socket-io';
 import {Game} from '../shared/game-utils';
+import {WrappedSocket} from '../connection/socket/socket-io.service';
 
 export class WhatTheHeck extends Game {
 
@@ -16,7 +16,7 @@ export class WhatTheHeck extends Game {
     roundWinner: Observable<RoundWinnerInfo>;
     draw: Observable<void>;
 
-    constructor(socket: Socket) {
+    constructor(socket: WrappedSocket) {
         super(socket);
 
         this.cardPlayed = socket.fromEvent<PlayedCardInfo>('cardPlayed');
@@ -27,7 +27,7 @@ export class WhatTheHeck extends Game {
         this.draw = socket.fromEvent<void>('draw');
     }
 
-    endGame(socket: Socket) {
+    endGame(socket: WrappedSocket) {
         socket.removeAllListeners('cardPlayed');
         socket.removeAllListeners('cardRemoved');
         socket.removeAllListeners('nextCard');

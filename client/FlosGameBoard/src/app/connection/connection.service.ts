@@ -3,7 +3,6 @@
  */
 
 import {Injectable} from '@angular/core';
-import {Socket} from 'ngx-socket-io';
 import {Observable} from 'rxjs';
 import {ChatMessage, LobbyInfo, LobbyInfoSmall, UserInfo} from '../shared/utils';
 import {Game, GameTypes} from '../shared/game-utils'
@@ -12,6 +11,7 @@ import {WhatTheHeck} from '../what-the-heck/WhatTheHeck';
 import {Title} from '@angular/platform-browser';
 import {CreateLobbyRequest, JoinLobbyRequest} from '../shared/request';
 import {SidenavService} from '../sidenav/sidenav.service';
+import {WrappedSocket} from './socket/socket-io.service';
 
 @Injectable({
     providedIn: 'root'
@@ -25,7 +25,7 @@ export class ConnectionService {
     avatar: number = 0;
     id: string = '';
 
-    constructor(private socket: Socket, private readonly router: Router, private titleService: Title, private readonly sideNav: SidenavService) {
+    constructor(private socket: WrappedSocket, private readonly router: Router, private titleService: Title, private readonly sideNav: SidenavService) {
         socket.connect();
         this.chat = this.socket.fromEvent('chat');
 

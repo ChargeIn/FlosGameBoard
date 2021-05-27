@@ -2,7 +2,7 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Socket} from 'ngx-socket-io';
+import {WrappedSocket} from '../connection/socket/socket-io.service';
 
 export class GameTypes {
 
@@ -30,13 +30,13 @@ export class GameTypes {
 }
 
 export class Game {
-    protected socket: Socket;
+    protected socket: WrappedSocket;
 
-    constructor(socket: Socket) {
+    constructor(socket: WrappedSocket) {
         this.socket = socket;
     }
 
-    endGame(_socket: Socket) {
+    endGame(_socket: WrappedSocket) {
     }
 
     howToPlay(): string {
