@@ -1,6 +1,7 @@
 /*!
  * Copyright (c) Florian Plesker
  */
+@use '~@angular/material' as mat;
 @import "../../theme";
 
 $toolbar-height: 32px;
@@ -9,7 +10,7 @@ $toolbar-height: 32px;
   padding: 10px;
 
   .description {
-    color: rgb(mat-color($mat-primary, lighter), 0.85);
+    color: rgb(mat.get-color-from-palette($mat-primary, lighter), 0.85);
   }
 }
 
