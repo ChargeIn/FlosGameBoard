@@ -2,26 +2,25 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Component, OnInit} from '@angular/core';
-import {ConnectionService} from '../connection/connection.service';
-import {LobbyInfo} from '../shared/utils';
-import {Router} from '@angular/router';
-import {GameTypes} from '../shared/game-utils';
+import { Component } from '@angular/core';
+import { ConnectionService } from '../connection/connection.service';
+import { LobbyInfo } from '../shared/utils';
+import { Router } from '@angular/router';
+import { GameTypes } from '../shared/game-utils';
 
 @Component({
     selector: 'app-lobby',
     templateUrl: './lobby.component.html',
-    styleUrls: ['./lobby.component.scss']
+    styleUrls: ['./lobby.component.scss'],
 })
-export class LobbyComponent implements OnInit {
-
+export class LobbyComponent {
     lobbyInfo: LobbyInfo;
 
-    constructor(private readonly connection: ConnectionService, private readonly router: Router) {
+    constructor(
+        private readonly connection: ConnectionService,
+        private readonly router: Router,
+    ) {
         this.lobbyInfo = connection.lobby!;
-    }
-
-    ngOnInit(): void {
     }
 
     start() {
@@ -38,7 +37,7 @@ export class LobbyComponent implements OnInit {
     }
 
     getGame() {
-        console.log(this.lobbyInfo.type)
+        console.log(this.lobbyInfo.type);
         return GameTypes.getName(this.lobbyInfo.type);
     }
 }

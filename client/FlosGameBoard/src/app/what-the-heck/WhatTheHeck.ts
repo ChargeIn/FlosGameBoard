@@ -2,13 +2,12 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Observable} from 'rxjs';
-import {PlayedCardInfo, RoundWinnerInfo, ScoreInfo} from '../shared/utils';
-import {Game} from '../shared/game-utils';
-import {WrappedSocket} from '../connection/socket/socket-io.service';
+import { Observable } from 'rxjs';
+import { PlayedCardInfo, RoundWinnerInfo, ScoreInfo } from '../shared/utils';
+import { Game } from '../shared/game-utils';
+import { WrappedSocket } from '../connection/socket/socket-io.service';
 
 export class WhatTheHeck extends Game {
-
     cardPlayed: Observable<PlayedCardInfo>;
     nextCard: Observable<number>;
     scores: Observable<ScoreInfo>;
@@ -40,7 +39,7 @@ export class WhatTheHeck extends Game {
     }
 
     removeCard() {
-        this.socket.emit('removeCard')
+        this.socket.emit('removeCard');
     }
 
     howToPlay(): string {
@@ -63,6 +62,6 @@ export class WhatTheHeck extends Game {
     }
 
     getName() {
-        return 'What the Heck'
+        return 'What the Heck';
     }
 }

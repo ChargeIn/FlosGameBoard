@@ -2,24 +2,22 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Component, Input, OnDestroy} from '@angular/core';
-import {ConnectionService} from '../../connection/connection.service';
-import {Subject} from 'rxjs';
-import {ChatMessage, ChatType} from '../../shared/utils';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { ConnectionService } from '../../connection/connection.service';
+import { Subject } from 'rxjs';
+import { ChatMessage, ChatType } from '../../shared/utils';
 
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.scss']
+    styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnDestroy {
-
     @Input() messages: ChatMessage[] = [];
     message = '';
     unsubscribe = new Subject<void>();
 
-    constructor(private readonly connection: ConnectionService) {
-    }
+    constructor(private readonly connection: ConnectionService) {}
 
     ngOnDestroy(): void {
         this.unsubscribe.next();

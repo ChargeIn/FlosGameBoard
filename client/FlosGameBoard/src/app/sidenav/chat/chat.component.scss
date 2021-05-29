@@ -68,5 +68,8 @@ $chat-input-height: 2rem;
     right: 0;
     height: $chat-input-height;
     border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

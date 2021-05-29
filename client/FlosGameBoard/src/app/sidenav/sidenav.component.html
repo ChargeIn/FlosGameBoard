@@ -2,7 +2,6 @@
   ~ Copyright (c) Florian Plesker
   -->
 <div class="sidenav-content">
-
     <app-lobby-info *ngIf="currentTab === 'Lobby'" [lobbies]="lobbies"></app-lobby-info>
 
     <div *ngIf="currentTab === 'HowToPlay'" class="how-to-play">
@@ -11,7 +10,6 @@
     </div>
 
     <app-chat *ngIf="currentTab === 'Chat'" [messages]="messages"></app-chat>
-
 </div>
 
 <mat-button-toggle-group class="sidenav-toolbar" [(value)]="currentTab" name="tabs" aria-label="Sidenav Tabs">

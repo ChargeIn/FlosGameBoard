@@ -2,20 +2,15 @@
  * Copyright (c) Florian Plesker
  */
 
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {WhatTheHeckComponent} from './what-the-heck.component';
-import {WhatTheHeckModule} from './what-the-heck.module';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { WhatTheHeckComponent } from './what-the-heck.component';
+import { WhatTheHeckModule } from './what-the-heck.module';
 
-const routes: Routes = [
-    {path: '', component: WhatTheHeckComponent}
-];
+const routes: Routes = [{ path: '', component: WhatTheHeckComponent }];
 
 @NgModule({
-    imports: [
-        WhatTheHeckModule,
-        RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    imports: [WhatTheHeckModule, RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class WhatTheHeckRoutingModule {
-}
+export class WhatTheHeckRoutingModule {}

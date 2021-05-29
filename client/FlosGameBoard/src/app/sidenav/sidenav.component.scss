@@ -2,15 +2,15 @@
  * Copyright (c) Florian Plesker
  */
 @use '~@angular/material' as mat;
-@import "../../theme";
+@use "../../theme" as theme;
 
-$toolbar-height: 32px;
+$toolbar-height: 36px;
 
 .how-to-play {
   padding: 10px;
 
   .description {
-    color: rgb(mat.get-color-from-palette($mat-primary, lighter), 0.85);
+    color: rgb(mat.get-color-from-palette(theme.$mat-primary, lighter), 0.85);
   }
 }
 
@@ -32,6 +32,11 @@ $toolbar-height: 32px;
   left: 0;
   right: 0;
   border-radius: 0;
+  border: none;
+
+  .sidenav-tab-button {
+    border-left: none !important;
+  }
 
   .mat-button-toggle {
     flex-grow: 1;
@@ -39,5 +44,13 @@ $toolbar-height: 32px;
     ::ng-deep .mat-button-toggle-label-content {
       line-height: $toolbar-height;
     }
+  }
+
+  .mat-button-toggle-appearance-standard {
+    background: var(--primary-color);
+  }
+
+  .mat-button-toggle-checked {
+    background: rgba(40, 51, 62, 1);
   }
 }

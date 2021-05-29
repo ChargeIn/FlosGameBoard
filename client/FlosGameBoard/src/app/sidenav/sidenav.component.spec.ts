@@ -2,9 +2,9 @@
  * Copyright (c) Florian Plesker
  */
 
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {SidenavComponent} from './sidenav.component';
+import { SidenavComponent } from './sidenav.component';
 
 describe('SidenavComponent', () => {
     let component: SidenavComponent;
@@ -12,9 +12,8 @@ describe('SidenavComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [SidenavComponent]
-        })
-            .compileComponents();
+            declarations: [SidenavComponent],
+        }).compileComponents();
     });
 
     beforeEach(() => {

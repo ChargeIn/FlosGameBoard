@@ -2,40 +2,48 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ConnectionService} from '../connection/connection.service';
-import {ChatMessage, LobbyInfoSmall} from '../shared/utils';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
-import {SidenavService} from './sidenav.service';
+import { Component, OnDestroy } from '@angular/core';
+import { ConnectionService } from '../connection/connection.service';
+import { ChatMessage, LobbyInfoSmall } from '../shared/utils';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { SidenavService } from './sidenav.service';
 
 type Tab = 'Chat' | 'HowToPlay' | 'Lobby';
 
 @Component({
     selector: 'app-sidenav',
     templateUrl: './sidenav.component.html',
-    styleUrls: ['./sidenav.component.scss']
+    styleUrls: ['./sidenav.component.scss'],
 })
-export class SidenavComponent implements OnInit, OnDestroy {
-
+export class SidenavComponent implements OnDestroy {
     lobbies: LobbyInfoSmall[] = [];
     messages: ChatMessage[] = [];
     private unsubscribe = new Subject<void>();
     currentTab: Tab = 'Lobby';
 
-    constructor(private readonly connection: ConnectionService, private readonly navService: SidenavService) {
-        this.connection.getLobbies().pipe(takeUntil(this.unsubscribe)).subscribe(info => this.lobbies = info);
+    constructor(
+        private readonly connection: ConnectionService,
+        private readonly navService: SidenavService,
+    ) {
+        this.connection
+            .getLobbies()
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe((info) => (this.lobbies = info));
 
-        this.connection.chat.pipe(takeUntil(this.unsubscribe)).subscribe(msg => {
-            this.messages.push(msg);
-            const length = this.messages.length;
-            this.messages = this.messages.filter((_m, i) => length - i < 30);
-        });
+        this.connection.chat
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe((msg) => {
+                this.messages.push(msg);
+                const length = this.messages.length;
+                this.messages = this.messages.filter(
+                    (_m, i) => length - i < 30,
+                );
+            });
 
-        this.navService.onShowLobbies.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.currentTab = 'Lobby');
-    }
-
-    ngOnInit(): void {
+        this.navService.onShowLobbies
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe(() => (this.currentTab = 'Lobby'));
     }
 
     ngOnDestroy(): void {

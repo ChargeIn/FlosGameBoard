@@ -12,6 +12,9 @@
                     <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png" alt="avatar">
                 </div>
                 <div class="user-name">{{user.name}}</div>
+                <div class="user-read-check">
+                    <mat-icon *ngIf="user.ready"></mat-icon>
+                </div>
             </div>
         </div>
 
@@ -40,9 +43,9 @@
         </div>
     </div>
     <div class="lobby-button-wrapper">
-        <button *ngIf="lobbyInfo.host" mat-flat-button (click)="start()">
+        <button mat-raised-button color="primary" (click)="leaveLobby()">Leave</button>
+        <button *ngIf="lobbyInfo.host" [disabled]="lobbyInfo.userCount < 2" color="accent" mat-raised-button (click)="start()">
             Start
         </button>
-        <button mat-flat-button (click)="leaveLobby()">Leave</button>
     </div>
 </div>

@@ -2,9 +2,9 @@
  * Copyright (c) Florian Plesker
  */
 
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ChatComponent} from './chat.component';
+import { ChatComponent } from './chat.component';
 
 describe('ChatComponent', () => {
     let component: ChatComponent;
@@ -12,9 +12,8 @@ describe('ChatComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ChatComponent]
-        })
-            .compileComponents();
+            declarations: [ChatComponent],
+        }).compileComponents();
     });
 
     beforeEach(() => {

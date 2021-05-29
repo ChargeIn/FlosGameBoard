@@ -8,8 +8,9 @@
             <tr class="lobby-item" *ngFor="let lobby of lobbies">
                 <td>
                     <button
-                            mat-flat-button
+                            mat-raised-button
                             matTooltip="Join Lobby"
+                            color="accent"
                             (click)="joinLobby(lobby.id)"
                     >
                         <span class="lobby-name">{{lobby.name}}</span>

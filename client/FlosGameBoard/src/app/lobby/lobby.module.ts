@@ -2,31 +2,27 @@
  * Copyright (c) Florian Plesker
  */
 
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {LobbyComponent} from './lobby.component';
-import {MatButtonModule} from '@angular/material/button';
-import {CreateLobbyDialogComponent} from './create-lobby-dialog/create-lobby-dialog.component';
-import {FormsModule} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LobbyComponent } from './lobby.component';
+import { MatButtonModule } from '@angular/material/button';
+import { CreateLobbyDialogComponent } from './create-lobby-dialog/create-lobby-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-    declarations: [
-        LobbyComponent,
-        CreateLobbyDialogComponent,
-    ],
+    declarations: [LobbyComponent, CreateLobbyDialogComponent],
     imports: [
         CommonModule,
         MatButtonModule,
         FormsModule,
         MatFormFieldModule,
-        MatSelectModule
+        MatSelectModule,
+        MatIconModule,
     ],
     providers: [],
-    exports: [
-        LobbyComponent,
-    ]
+    exports: [LobbyComponent],
 })
-export class LobbyModule {
-}
+export class LobbyModule {}

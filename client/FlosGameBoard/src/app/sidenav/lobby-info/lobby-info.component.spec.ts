@@ -2,9 +2,9 @@
  * Copyright (c) Florian Plesker
  */
 
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {LobbyInfoComponent} from './lobby-info.component';
+import { LobbyInfoComponent } from './lobby-info.component';
 
 describe('LobbyInfoComponent', () => {
     let component: LobbyInfoComponent;
@@ -12,9 +12,8 @@ describe('LobbyInfoComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [LobbyInfoComponent]
-        })
-            .compileComponents();
+            declarations: [LobbyInfoComponent],
+        }).compileComponents();
     });
 
     beforeEach(() => {

@@ -2,19 +2,17 @@
  * Copyright (c) Florian Plesker
  */
 
-import {Injectable, OnDestroy} from '@angular/core';
-import {Subject} from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class SidenavService implements OnDestroy {
-
     onShowLobbies = new Subject<void>();
     closeSideNav = new Subject<void>();
 
-    constructor() {
-    }
+    constructor() {}
 
     showLobbies() {
         this.onShowLobbies.next();

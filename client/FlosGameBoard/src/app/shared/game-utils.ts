@@ -2,10 +2,9 @@
  * Copyright (c) Florian Plesker
  */
 
-import {WrappedSocket} from '../connection/socket/socket-io.service';
+import { WrappedSocket } from '../connection/socket/socket-io.service';
 
 export class GameTypes {
-
     static WHAT_THE_HECK = 0;
 
     static getGamePath(type: number) {
@@ -26,7 +25,7 @@ export class GameTypes {
         }
     }
 
-    0: 'what-the-heck'
+    0: 'what-the-heck';
 }
 
 export class Game {
@@ -36,8 +35,7 @@ export class Game {
         this.socket = socket;
     }
 
-    endGame(_socket: WrappedSocket) {
-    }
+    endGame(_socket: WrappedSocket) {}
 
     howToPlay(): string {
         return '';

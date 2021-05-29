@@ -7,7 +7,7 @@
     <input #name type="text" [(ngModel)]="lobbyName" placeholder="Lobby Name" (keyup)="setName(name.value)"
            (keyup.enter)="createLobby()" [class.warn]="lobbyName.length >= 25">
     <div class="button-box">
-        <button mat-flat-button (click)="close()">Cancel</button>
+        <button mat-flat-button color="primary" (click)="close()">Cancel</button>
         <button mat-flat-button color="accent" (click)="createLobby()">Confirm</button>
     </div>
 </div>

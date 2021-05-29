@@ -2,9 +2,9 @@
  * Copyright (c) Florian Plesker
  */
 
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import {SidenavService} from './sidenav.service';
+import { SidenavService } from './sidenav.service';
 
 describe('SidenavService', () => {
     let service: SidenavService;

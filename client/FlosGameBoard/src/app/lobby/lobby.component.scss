@@ -17,6 +17,7 @@
     flex-wrap: wrap;
     align-items: stretch;
     width: 100%;
+    min-height: 450px;
   }
 
   .lobby-info-container {
@@ -53,15 +54,17 @@
 
 
     .user-container {
+      border-radius: 10px;
+      background: #16212b52;
+      padding: 5px;
       height: 50px;
-      width: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
       font-weight: 500;
       overflow-y: auto;
       overflow-x: hidden;
-      margin: 10px 0;
+      margin: 5px 0;
     }
 
     .user-avatar-container {

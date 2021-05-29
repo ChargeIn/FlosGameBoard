@@ -2,21 +2,13 @@
  * Copyright (c) Florian Plesker
  */
 
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {CardComponent} from './card/card.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
-    declarations: [
-        CardComponent
-    ],
-    imports: [
-        CommonModule
-    ],
-    exports: [
-        CardComponent,
-        CommonModule
-    ]
+  declarations: [CardComponent],
+  imports: [CommonModule],
+  exports: [CardComponent, CommonModule],
 })
-export class SharedModule {
-}
+export class SharedModule {}
