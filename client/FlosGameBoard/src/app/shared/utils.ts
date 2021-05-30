@@ -27,7 +27,7 @@ export interface UserInfo {
 
 export interface PlayedCardInfo {
     id: string;
-    value: number;
+    played: boolean;
 }
 
 export interface ScoreInfo {

@@ -83,6 +83,16 @@ export class Lobby {
             },
         );
 
+        user.socket.on('ready', (isReady: boolean) => {
+            this.users.forEach((usr) => {
+                usr.socket.emit('ready', { userId: user.socket.id, isReady });
+
+                if (usr.socket.id === user.socket.id) {
+                    usr.ready = isReady;
+                }
+            });
+        });
+
         this.users.push(user);
     }
 
@@ -91,15 +101,17 @@ export class Lobby {
             this.changeHost(0);
         }
 
+        socket.removeAllListeners('ready');
+        socket.removeAllListeners('postMessage');
+        socket.removeAllListeners('startGame');
+        socket.removeAllListeners('changeGame');
+
         this.users = this.users.filter((u) => u.socket.id !== socket.id);
         this.users.forEach((user) => user.socket.emit('playerLeft', socket.id));
         this.runningGame?.setUsers(this.users);
     }
 
     changeHost(index: number): void {
-        this.users[this.host].socket.removeAllListeners('changeGame');
-        this.users[this.host].socket.removeAllListeners('start');
-
         this.host = index;
         this.users[this.host].socket.emit('changeHost', true);
     }
@@ -116,6 +128,7 @@ export class Lobby {
                 name: u.name,
                 id: u.socket.id,
                 avatar: u.avatar,
+                ready: u.ready,
             })),
         };
     }

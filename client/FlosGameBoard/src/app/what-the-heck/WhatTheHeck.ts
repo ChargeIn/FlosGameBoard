@@ -11,7 +11,6 @@ export class WhatTheHeck extends Game {
     cardPlayed: Observable<PlayedCardInfo>;
     nextCard: Observable<number>;
     scores: Observable<ScoreInfo>;
-    removedCard: Observable<string>;
     roundWinner: Observable<RoundWinnerInfo>;
     draw: Observable<void>;
 
@@ -21,7 +20,6 @@ export class WhatTheHeck extends Game {
         this.cardPlayed = socket.fromEvent<PlayedCardInfo>('cardPlayed');
         this.nextCard = socket.fromEvent<number>('nextCard');
         this.scores = socket.fromEvent<ScoreInfo>('endGame');
-        this.removedCard = socket.fromEvent<string>('cardRemoved');
         this.roundWinner = socket.fromEvent<RoundWinnerInfo>('roundWinner');
         this.draw = socket.fromEvent<void>('draw');
     }

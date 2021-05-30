@@ -8,6 +8,7 @@ export interface User {
     socket: Socket;
     name: string;
     avatar: number;
+    ready: boolean;
 }
 
 export interface LobbyInfo {
@@ -30,6 +31,7 @@ export interface UserInfo {
     id: string;
     avatar: number;
     name: string;
+    ready: boolean;
 }
 
 export interface ChatMessage {

@@ -79,6 +79,20 @@
     .user-name {
       padding-bottom: 8px;
     }
+
+    .user-read-check {
+      border-radius: 10px;
+      height: 40px;
+      width: 40px;
+      margin: auto 10px auto auto;
+      background: var(--primary-color-see-through);
+
+      mat-icon {
+        color: #1bff00;
+        font-size: 40px;
+        font-weight: 800;
+      }
+    }
   }
 
   .lobby-button-wrapper {
@@ -102,5 +116,19 @@
     font-weight: 500;
     font-size: 1.5rem;
     margin-bottom: 15px;
+  }
+
+  .ready-title {
+    position: absolute;
+    right: 28px;
+    top: 33px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 400px) {
+    top: 5%;
+    left: 1%;
+    right: 1%;
+    width: 98%;
   }
 }

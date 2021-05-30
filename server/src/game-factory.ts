@@ -92,7 +92,7 @@ export class WhatTheHeck implements Game {
                     this.users.forEach((u) => {
                         u.socket.emit('cardPlayed', {
                             id: user.socket.id,
-                            value: num,
+                            played: true,
                         });
                     });
                 }
@@ -103,7 +103,10 @@ export class WhatTheHeck implements Game {
                     (c) => c.user.socket.id !== user.socket.id,
                 );
                 this.users.forEach((u) => {
-                    u.socket.emit('cardRemoved', user.socket.id);
+                    u.socket.emit('cardPlayed', {
+                        id: user.socket.id,
+                        played: false,
+                    });
                 });
             });
         });
@@ -152,5 +155,12 @@ export class WhatTheHeck implements Game {
 
     setUsers(users: User[]): void {
         this.users = users;
+    }
+
+    end(): void {
+        this.users.forEach((usr) => {
+            usr.socket.removeAllListeners('playCard');
+            usr.socket.removeAllListeners('removeCard');
+        });
     }
 }

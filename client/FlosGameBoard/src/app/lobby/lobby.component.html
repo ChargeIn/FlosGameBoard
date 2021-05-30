@@ -7,13 +7,14 @@
     <div class="lobby-content">
         <div class="lobby-users-container">
             <div class="title">Players</div>
+            <div class="ready-title title">Ready?</div>
             <div class="user-container" *ngFor="let user of lobbyInfo.users">
                 <div class="user-avatar-container">
                     <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png" alt="avatar">
                 </div>
                 <div class="user-name">{{user.name}}</div>
                 <div class="user-read-check">
-                    <mat-icon *ngIf="user.ready"></mat-icon>
+                    <mat-icon *ngIf="user.ready">check</mat-icon>
                 </div>
             </div>
         </div>
@@ -44,6 +45,7 @@
     </div>
     <div class="lobby-button-wrapper">
         <button mat-raised-button color="primary" (click)="leaveLobby()">Leave</button>
+        <button mat-raised-button color="accent" (click)="ready()">{{this.isReady ? 'Unready' : 'Ready'}}</button>
         <button *ngIf="lobbyInfo.host" [disabled]="lobbyInfo.userCount < 2" color="accent" mat-raised-button (click)="start()">
             Start
         </button>

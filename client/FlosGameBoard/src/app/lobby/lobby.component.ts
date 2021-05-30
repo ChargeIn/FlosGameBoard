@@ -15,6 +15,7 @@ import { GameTypes } from '../shared/game-utils';
 })
 export class LobbyComponent {
     lobbyInfo: LobbyInfo;
+    isReady = false;
 
     constructor(
         private readonly connection: ConnectionService,
@@ -37,7 +38,11 @@ export class LobbyComponent {
     }
 
     getGame() {
-        console.log(this.lobbyInfo.type);
         return GameTypes.getName(this.lobbyInfo.type);
+    }
+
+    ready() {
+        this.isReady = !this.isReady;
+        this.connection.ready(this.isReady);
     }
 }

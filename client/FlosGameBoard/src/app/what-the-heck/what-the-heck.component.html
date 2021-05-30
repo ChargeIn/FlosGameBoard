@@ -3,7 +3,8 @@
   -->
 
 <div class="player-container">
-    <div *ngFor="let i of opponents">
+    <div *ngFor="let i of opponents" class="player-{{i}}">
+        <img alt="Avatar" class="avatar-small" src="assets/avatars/{{players[i].user.avatar}}.png">
         {{players[i].user.name}}: {{players[i].score}}
         <div *ngIf="players[i].playedCard">
             Played

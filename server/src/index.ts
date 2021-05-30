@@ -73,6 +73,7 @@ function createNewLobby(
             name: lobbyReq.userName,
             socket,
             avatar: lobbyReq.avatar,
+            ready: false,
         },
         lobbyReq.lobbyName,
         lobbies.length,
@@ -94,7 +95,12 @@ function joinLobby(joinReq: JoinLobbyRequest, socket: Socket): LobbyInfo {
     leaveMainChat(socket);
 
     const lobby = lobbies[joinReq.lobbyId];
-    lobby.addUser({ name: joinReq.userName, socket, avatar: joinReq.avatar });
+    lobby.addUser({
+        name: joinReq.userName,
+        socket,
+        avatar: joinReq.avatar,
+        ready: false,
+    });
     updateLobbies.next();
 
     return lobby.getInfo(socket);
@@ -108,16 +114,12 @@ function getLobbies(): LobbyInfoSmall[] {
 function leaveLobby(id: number, socket: Socket): void {
     console.log(socket.id + ' just left the lobby ' + id);
     const lobby = lobbies[id];
-
-    joinMainChat(socket);
-
-    if (lobby.users.length < 2) {
+    lobbies[id].removeUser(socket);
+    if (lobby.users.length < 1) {
         lobbies = lobbies.filter((l, i) => i !== id);
         updateLobbies.next();
-        return;
     }
-
-    lobbies[id].removeUser(socket);
+    joinMainChat(socket);
 }
 
 function removeUser(socket: Socket): void {
