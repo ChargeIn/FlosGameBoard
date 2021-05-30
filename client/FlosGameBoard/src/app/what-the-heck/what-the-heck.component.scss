@@ -1,6 +1,14 @@
 /*!
  * Copyright (c) Florian Plesker
  */
+.player-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
 .card-container {
   position: absolute;
   bottom: 0;
@@ -21,6 +29,33 @@
   }
 }
 
+.game-table-wrapper {
+  perspective: 300px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-table {
+  width: 50%;
+  height: 50%;
+  transform: rotateX(25deg);
+
+  border-radius: 10px;
+  background: linear-gradient(140deg, var(--accent-darker-color), var(--primary-color));
+
+  @media (max-width: 400px) {
+    top: 5%;
+    left: 1%;
+    right: 1%;
+    width: 98%;
+  }
+}
 
 .current-card {
   position: absolute;
