@@ -97,6 +97,10 @@ export class Lobby {
     }
 
     removeUser(socket: Socket): void {
+        if (this.users.findIndex((u) => u.socket.id === socket.id) === -1) {
+            return;
+        }
+
         if (this.users[this.host].socket.id === socket.id) {
             this.changeHost(0);
         }

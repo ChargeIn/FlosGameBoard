@@ -1,6 +1,14 @@
 /*!
  * Copyright (c) Florian Plesker
  */
+
+.game-board {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: auto;
+}
+
 .player-container {
   position: absolute;
   top: 0;
@@ -31,29 +39,28 @@
 
 .game-table-wrapper {
   perspective: 300px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 100%;
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .game-table {
-  width: 50%;
-  height: 50%;
+  width: 50vw;
+  height: 30vw;
   transform: rotateX(25deg);
 
   border-radius: 10px;
   background: linear-gradient(140deg, var(--accent-darker-color), var(--primary-color));
 
-  @media (max-width: 400px) {
+  @media (max-width: 900px) {
     top: 5%;
     left: 1%;
     right: 1%;
-    width: 98%;
+    width: 70vw;
+    height: 50vw;
   }
 }
 
