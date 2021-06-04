@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Updated angular" />
+    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Smaller Adjustments">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +30,7 @@
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.Client">
+  <component name="RunManager" selected="npm.Server">
     <configuration name="Client" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/client/FlosGameBoard/package.json" />
       <command value="run" />
@@ -54,8 +57,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Client" />
         <item itemvalue="npm.Server" />
+        <item itemvalue="npm.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -67,7 +70,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1622789750293</updated>
-      <workItem from="1622789753459" duration="2500000" />
+      <workItem from="1622789753459" duration="3225000" />
+      <workItem from="1622833477834" duration="474000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -97,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622792020116</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Smaller Adjustments">
+      <created>1622792379927</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622792379927</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,11 +124,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added workspace files" />
     <MESSAGE value="Updated angular" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated angular" />
+    <MESSAGE value="Smaller Adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Smaller Adjustments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
