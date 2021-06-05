@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Smaller Adjustments">
+    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Adjustments for small screens">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.Server">
@@ -71,7 +76,9 @@
       <option name="presentableId" value="Default" />
       <updated>1622789750293</updated>
       <workItem from="1622789753459" duration="3225000" />
-      <workItem from="1622833477834" duration="474000" />
+      <workItem from="1622833477834" duration="1104000" />
+      <workItem from="1622883450297" duration="567000" />
+      <workItem from="1622909976511" duration="5019000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -108,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622792379927</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adjustments for small screens">
+      <created>1622833980639</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622833980639</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +144,8 @@
     <MESSAGE value="Added workspace files" />
     <MESSAGE value="Updated angular" />
     <MESSAGE value="Smaller Adjustments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Smaller Adjustments" />
+    <MESSAGE value="Adjustments for small screens" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjustments for small screens" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

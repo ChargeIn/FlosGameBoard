@@ -3,51 +3,54 @@
   -->
 
 <div class="lobby-wrapper">
+  <div class="lobby-content">
 
-    <div class="lobby-content">
-        <div class="lobby-users-container">
-            <div class="title">Players</div>
-            <div class="ready-title title">Ready?</div>
-            <div class="user-container" *ngFor="let user of lobbyInfo.users">
-                <div class="user-avatar-container">
-                    <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png" alt="avatar">
-                </div>
-                <div class="user-name">{{user.name}}</div>
-                <div class="user-read-check">
-                    <mat-icon *ngIf="user.ready">check</mat-icon>
-                </div>
-            </div>
+    <div class="lobby-info-container">
+      <div class="title">Lobby "{{lobbyInfo.name}}"</div>
+      <div class="lobby-items">
+        <div class="lobby-item">
+          <div class="label">Players</div>
+          <div class="value">{{lobbyInfo.userCount}} / 5</div>
         </div>
 
-        <div class="lobby-info-container">
-            <div class="title">Lobby "{{lobbyInfo.name}}"</div>
-            <div class="lobby-items">
-                <div class="lobby-item">
-                    <div class="label">Players</div>
-                    <div class="value">{{lobbyInfo.userCount}} / 5</div>
-                </div>
-
-                <div class="lobby-item">
-                    <div class="label">Game</div>
-                    <div class="value">
-                        <mat-form-field *ngIf="lobbyInfo.host">
-                            <mat-select value="0" (selectionChange)="onGameChange($event.value)">
-                                <mat-option value="0">What the Heck</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <div *ngIf="!lobbyInfo.host">
-                            {{getGame()}}
-                        </div>
-                    </div>
-                </div>
+        <div class="lobby-item">
+          <div class="label">Game</div>
+          <div class="value">
+            <mat-form-field *ngIf="lobbyInfo.host">
+              <mat-select value="0" (selectionChange)="onGameChange($event.value)">
+                <mat-option value="0">What the Heck</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="!lobbyInfo.host">
+              {{getGame()}}
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="lobby-button-wrapper">
-        <button mat-raised-button color="primary" (click)="leaveLobby()">Leave</button>
-        <button mat-raised-button color="accent" (click)="ready()">{{this.isReady ? 'Unready' : 'Ready'}}</button>
-        <button *ngIf="lobbyInfo.host" [disabled]="lobbyInfo.userCount < 2" color="accent" mat-raised-button (click)="start()">
-            Start
-        </button>
+
+    <div class="lobby-users-container">
+      <div class="title">Players</div>
+      <div class="ready-title title">Ready?</div>
+      <div class="users-wrapper">
+        <div class="user-container" *ngFor="let user of lobbyInfo.users">
+          <div class="user-avatar-container">
+            <img class="user-avatar" src="assets/avatars/{{user.avatar}}.png" alt="avatar">
+          </div>
+          <div class="user-name">{{user.name}}</div>
+          <div class="user-read-check">
+            <mat-icon *ngIf="user.ready">check</mat-icon>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="lobby-button-wrapper">
+    <button mat-raised-button color="primary" (click)="leaveLobby()">Leave</button>
+    <button mat-raised-button color="accent" (click)="ready()">{{this.isReady ? 'Unready' : 'Ready'}}</button>
+    <button *ngIf="lobbyInfo.host" [disabled]="lobbyInfo.userCount < 2" color="accent" mat-raised-button
+            (click)="start()">
+      Start
+    </button>
+  </div>
 </div>
