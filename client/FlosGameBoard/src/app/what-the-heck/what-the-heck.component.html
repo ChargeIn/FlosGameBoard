@@ -2,6 +2,12 @@
   ~ Copyright (c) Florian Plesker
   -->
 <div class="game-board">
+    <div class="game-table">
+        <div *ngIf="currentCard" class="current-card" [class.negative]="currentCard < 0">
+            <span>{{currentCard}}</span>
+        </div>
+    </div>
+
     <div class="player-container">
         <div *ngFor="let i of opponents, let j = index" class="player-{{j}}">
             <img alt="Avatar" class="avatar-small" src="assets/avatars/{{players[i].user.avatar}}.png">
@@ -11,14 +17,6 @@
             </div>
             <div *ngIf="!players[i].playedCard">
                 Not played
-            </div>
-        </div>
-    </div>
-
-    <div class="game-table-wrapper">
-        <div class="game-table">
-            <div *ngIf="currentCard" class="current-card">
-                <span>{{currentCard}}</span>
             </div>
         </div>
     </div>
