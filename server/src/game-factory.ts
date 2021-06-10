@@ -54,6 +54,7 @@ export class WhatTheHeck implements Game {
                         u.socket.emit('roundWinner', {
                             winnerId: winner,
                             points: this.currentCard,
+                            cards: this.cards,
                         });
                     });
                     this.cards = [];
@@ -78,7 +79,7 @@ export class WhatTheHeck implements Game {
                     } else {
                         if (this.cardsPlayed < this.maxCardsPlayable) {
                             this.users.forEach((usr) =>
-                                usr.socket.emit('draw'),
+                                usr.socket.emit('draw', { cards: this.cards }),
                             );
                         } else {
                             this.users.forEach((usr) =>

@@ -37,6 +37,11 @@ export interface ScoreInfo {
 export interface RoundWinnerInfo {
     winnerId: string;
     points: number;
+    cards: { user: UserInfo; card: number }[];
+}
+
+export interface DrawInfo {
+    cards: { user: UserInfo; card: number }[];
 }
 
 export interface ChatMessage {

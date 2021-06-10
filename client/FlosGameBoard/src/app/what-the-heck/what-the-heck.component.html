@@ -9,14 +9,11 @@
     </div>
 
     <div class="player-container">
-        <div *ngFor="let i of opponents, let j = index" class="player-{{j}}">
+        <div *ngFor="let i of opponents, let j = index" class="player-{{j}} player">
             <img alt="Avatar" class="avatar-small" src="assets/avatars/{{players[i].user.avatar}}.png">
             {{players[i].user.name}}: {{players[i].score}}
-            <div *ngIf="players[i].playedCard">
-                Played
-            </div>
-            <div *ngIf="!players[i].playedCard">
-                Not played
+            <div class="player-card" [class.played]="players[i].playedCard">
+                <mat-icon *ngIf="players[i].playedCard">check</mat-icon>
             </div>
         </div>
     </div>

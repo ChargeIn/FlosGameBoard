@@ -5,7 +5,12 @@
 import { Component } from '@angular/core';
 import { ConnectionService } from '../connection/connection.service';
 import { WhatTheHeck } from './WhatTheHeck';
-import { RoundWinnerInfo, ScoreInfo, UserInfo } from '../shared/utils';
+import {
+    DrawInfo,
+    RoundWinnerInfo,
+    ScoreInfo,
+    UserInfo,
+} from '../shared/utils';
 
 @Component({
     selector: 'app-what-the-heck',
@@ -35,7 +40,9 @@ export class WhatTheHeckComponent {
         });
 
         this.game.nextCard.subscribe((card) => (this.currentCard = card));
-        this.game.draw.subscribe(() => this.roundFinished());
+        this.game.draw.subscribe((drawInfo: DrawInfo) => {
+            this.roundFinished();
+        });
         this.game.cardPlayed.subscribe((cardInfo) => {
             this.players.forEach((player) => {
                 if (player.user.id === cardInfo.id) {

@@ -3,7 +3,12 @@
  */
 
 import { Observable } from 'rxjs';
-import { PlayedCardInfo, RoundWinnerInfo, ScoreInfo } from '../shared/utils';
+import {
+    DrawInfo,
+    PlayedCardInfo,
+    RoundWinnerInfo,
+    ScoreInfo,
+} from '../shared/utils';
 import { Game } from '../shared/game-utils';
 import { WrappedSocket } from '../connection/socket/socket-io.service';
 
@@ -12,7 +17,7 @@ export class WhatTheHeck extends Game {
     nextCard: Observable<number>;
     scores: Observable<ScoreInfo>;
     roundWinner: Observable<RoundWinnerInfo>;
-    draw: Observable<void>;
+    draw: Observable<DrawInfo>;
 
     constructor(socket: WrappedSocket) {
         super(socket);
@@ -21,7 +26,7 @@ export class WhatTheHeck extends Game {
         this.nextCard = socket.fromEvent<number>('nextCard');
         this.scores = socket.fromEvent<ScoreInfo>('endGame');
         this.roundWinner = socket.fromEvent<RoundWinnerInfo>('roundWinner');
-        this.draw = socket.fromEvent<void>('draw');
+        this.draw = socket.fromEvent<DrawInfo>('draw');
     }
 
     endGame(socket: WrappedSocket) {
