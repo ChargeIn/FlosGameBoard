@@ -1,6 +1,12 @@
 <!--
   ~ Copyright (c) Florian Plesker
   -->
+<div *ngIf="transition" class="transition-box">
+    <div class="content">
+        <table>
+        </table>
+    </div>
+</div>
 <div class="game-board">
     <div class="game-table">
         <div *ngIf="currentCard" class="current-card" [class.negative]="currentCard < 0">

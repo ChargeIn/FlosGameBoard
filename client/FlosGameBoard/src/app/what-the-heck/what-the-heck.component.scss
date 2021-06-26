@@ -59,7 +59,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px #00ffe6, inset 0 0px 17px 9px #123748;
+    box-shadow: 0 0 20px #00ffe6, inset 0 0 17px 9px #123748;
     height: 100px;
     width: 150px;
     border-radius: 10px;
@@ -90,4 +90,19 @@
     overflow: visible;
     max-height: 210px;
   }
+}
+
+
+.transition-box {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #b1b1b147;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -24,6 +24,7 @@ export class WhatTheHeckComponent {
     playedCard: number | null = null;
     players: { user: UserInfo; playedCard: boolean; score: number }[];
     opponents: number[] = [];
+    transition = true;
 
     constructor(private connection: ConnectionService) {
         this.currentDeck = Array.from({ length: 15 }, (_, i) => i + 1);
@@ -40,7 +41,7 @@ export class WhatTheHeckComponent {
         });
 
         this.game.nextCard.subscribe((card) => (this.currentCard = card));
-        this.game.draw.subscribe((drawInfo: DrawInfo) => {
+        this.game.draw.subscribe((_drawInfo: DrawInfo) => {
             this.roundFinished();
         });
         this.game.cardPlayed.subscribe((cardInfo) => {
