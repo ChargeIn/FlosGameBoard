@@ -49,17 +49,20 @@ export class WhatTheHeck implements Game {
                 if (this.cards.length === this.users.length) {
                     this.cardsPlayed++;
                     const winner: string | null = this.getWinner();
-                    console.log(winner + ' is the winner of round');
-                    this.users.forEach((u) => {
-                        u.socket.emit('roundWinner', {
-                            winnerId: winner,
-                            points: this.currentCard,
-                            cards: this.cards,
-                        });
-                    });
-                    this.cards = [];
+                    const playedCards = this.cards.map((c) => ({
+                        card: c.card,
+                        user: c.user.socket.id,
+                    }));
 
                     if (winner) {
+                        console.log(winner + ' is the winner of round');
+                        this.users.forEach((u) => {
+                            u.socket.emit('roundWinner', {
+                                winnerId: winner,
+                                points: this.currentCard,
+                                cards: playedCards,
+                            });
+                        });
                         this.scores[winner] += this.currentCard;
                         if (
                             this.cardDeck.length > 0 &&
@@ -70,6 +73,7 @@ export class WhatTheHeck implements Game {
                                 usr.socket.emit('nextCard', this.currentCard),
                             );
                         } else {
+                            console.log('Game Ended: ' + this.scores);
                             this.users.forEach((usr) =>
                                 usr.socket.emit('endGame', {
                                     scores: this.scores,
@@ -78,10 +82,16 @@ export class WhatTheHeck implements Game {
                         }
                     } else {
                         if (this.cardsPlayed < this.maxCardsPlayable) {
+                            console.log(
+                                'Draw:' + this.cards.map((c) => c.card),
+                            );
                             this.users.forEach((usr) =>
-                                usr.socket.emit('draw', { cards: this.cards }),
+                                usr.socket.emit('draw', {
+                                    cards: playedCards,
+                                }),
                             );
                         } else {
+                            console.log('Game Ended: ' + this.scores);
                             this.users.forEach((usr) =>
                                 usr.socket.emit('endGame', {
                                     scores: this.scores,
@@ -89,6 +99,8 @@ export class WhatTheHeck implements Game {
                             );
                         }
                     }
+
+                    this.cards = [];
                 } else {
                     this.users.forEach((u) => {
                         u.socket.emit('cardPlayed', {

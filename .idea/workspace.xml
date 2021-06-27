@@ -4,10 +4,9 @@
     <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Updated dependencies.&#10;Started working on transition panel for what the heck">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/game-factory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/game-factory.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,7 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.Server">
+  <component name="RunManager" selected="npm.Client">
     <configuration name="Client" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/client/FlosGameBoard/package.json" />
       <command value="run" />
@@ -66,8 +65,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Server" />
         <item itemvalue="npm.Client" />
+        <item itemvalue="npm.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -88,7 +87,9 @@
       <workItem from="1623358530646" duration="1834000" />
       <workItem from="1623528753989" duration="1772000" />
       <workItem from="1623605994594" duration="610000" />
-      <workItem from="1624734982379" duration="1931000" />
+      <workItem from="1624734982379" duration="1970000" />
+      <workItem from="1624820081212" duration="3746000" />
+      <workItem from="1624826946015" duration="524000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -153,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623535353197</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated dependencies.&#10;Started working on transition panel for what the heck">
+      <created>1624736943354</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1624736943354</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -3,7 +3,13 @@
   -->
 <div *ngIf="transition" class="transition-box">
     <div class="content">
+        <h2>Scores</h2>
         <table>
+            <tr *ngFor="let player of players">
+                <td><img alt="Avatar" class="avatar-small"
+                         src="assets/avatars/{{player.user.avatar}}.png">{{player.user.name}}</td>
+                <td>{{player.score}}</td>
+            </tr>
         </table>
     </div>
 </div>
