@@ -105,4 +105,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  .content {
+    background: #273f54cf;
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .flex-1 {
+    flex-grow: 1;
+  }
+
+  .flex-4 {
+    flex-grow: 4;
+  }
 }

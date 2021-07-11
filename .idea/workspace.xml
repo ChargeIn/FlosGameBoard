@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Updated dependencies.&#10;Started working on transition panel for what the heck">
+    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Fixed server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/game-factory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/game-factory.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +36,7 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.Client">
+  <component name="RunManager" selected="npm.Server">
     <configuration name="Client" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/client/FlosGameBoard/package.json" />
       <command value="run" />
@@ -65,8 +63,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Client" />
         <item itemvalue="npm.Server" />
+        <item itemvalue="npm.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -89,7 +87,10 @@
       <workItem from="1623605994594" duration="610000" />
       <workItem from="1624734982379" duration="1970000" />
       <workItem from="1624820081212" duration="3746000" />
-      <workItem from="1624826946015" duration="524000" />
+      <workItem from="1624826946015" duration="551000" />
+      <workItem from="1625161508144" duration="88000" />
+      <workItem from="1625162131953" duration="24000" />
+      <workItem from="1626031270174" duration="1122000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -161,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624736943354</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed server">
+      <created>1624827487653</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1624827487653</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +196,8 @@
     <MESSAGE value="Added cards info to roundWinner and Draw.&#10;Adjusted background of players card field." />
     <MESSAGE value="Changed the design of the main card." />
     <MESSAGE value="Updated dependencies.&#10;Started working on transition panel for what the heck" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies.&#10;Started working on transition panel for what the heck" />
+    <MESSAGE value="Fixed server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed server" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
