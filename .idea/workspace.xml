@@ -36,7 +36,7 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.Server">
+  <component name="RunManager" selected="npm.Client">
     <configuration name="Client" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/client/FlosGameBoard/package.json" />
       <command value="run" />
@@ -63,8 +63,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Server" />
         <item itemvalue="npm.Client" />
+        <item itemvalue="npm.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -91,6 +91,7 @@
       <workItem from="1625161508144" duration="88000" />
       <workItem from="1625162131953" duration="24000" />
       <workItem from="1626031270174" duration="1122000" />
+      <workItem from="1626208545796" duration="1350000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>

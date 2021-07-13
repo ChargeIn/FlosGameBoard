@@ -111,6 +111,15 @@
     background: #273f54cf;
     border-radius: 8px;
     padding: 20px;
+
+    .player-info-container {
+      display: flex;
+      align-items: center;
+
+      .avatar-small {
+        padding-right: 10px;
+      }
+    }
   }
 
   .flex-1 {
