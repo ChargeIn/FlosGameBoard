@@ -2,7 +2,12 @@
  * Copyright (c) Florian Plesker
  */
 
-import { Component, OnDestroy } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnDestroy,
+} from '@angular/core';
 import { ConnectionService } from '../connection/connection.service';
 import { ChatMessage, LobbyInfoSmall } from '../shared/utils';
 import { Subject } from 'rxjs';
@@ -15,6 +20,7 @@ type Tab = 'Chat' | 'HowToPlay' | 'Lobby';
     selector: 'app-sidenav',
     templateUrl: './sidenav.component.html',
     styleUrls: ['./sidenav.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent implements OnDestroy {
     lobbies: LobbyInfoSmall[] = [];
@@ -25,11 +31,15 @@ export class SidenavComponent implements OnDestroy {
     constructor(
         private readonly connection: ConnectionService,
         private readonly navService: SidenavService,
+        private readonly cd: ChangeDetectorRef,
     ) {
         this.connection
             .getLobbies()
             .pipe(takeUntil(this.unsubscribe))
-            .subscribe((info) => (this.lobbies = info));
+            .subscribe((info) => {
+                this.lobbies = info;
+                this.cd.markForCheck();
+            });
 
         this.connection.chat
             .pipe(takeUntil(this.unsubscribe))
@@ -39,6 +49,7 @@ export class SidenavComponent implements OnDestroy {
                 this.messages = this.messages.filter(
                     (_m, i) => length - i < 30,
                 );
+                this.cd.markForCheck();
             });
 
         this.navService.onShowLobbies

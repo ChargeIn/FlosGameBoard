@@ -111,10 +111,13 @@
     background: #273f54cf;
     border-radius: 8px;
     padding: 20px;
+    min-width: 50%;
+    min-height: 50%;
 
     .player-info-container {
       display: flex;
       align-items: center;
+      padding: 10px;
 
       .avatar-small {
         padding-right: 10px;

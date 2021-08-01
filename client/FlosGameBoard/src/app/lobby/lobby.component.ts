@@ -2,7 +2,7 @@
  * Copyright (c) Florian Plesker
  */
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ConnectionService } from '../connection/connection.service';
 import { LobbyInfo } from '../shared/utils';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { GameTypes } from '../shared/game-utils';
     selector: 'app-lobby',
     templateUrl: './lobby.component.html',
     styleUrls: ['./lobby.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LobbyComponent {
     lobbyInfo: LobbyInfo;

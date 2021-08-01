@@ -2,7 +2,7 @@
  * Copyright (c) Florian Plesker
  */
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ConnectionService } from '../connection/connection.service';
 import { WhatTheHeck } from './WhatTheHeck';
 import {
@@ -16,6 +16,7 @@ import {
     selector: 'app-what-the-heck',
     templateUrl: './what-the-heck.component.html',
     styleUrls: ['./what-the-heck.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WhatTheHeckComponent {
     game: WhatTheHeck;

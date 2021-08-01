@@ -2,7 +2,7 @@
  * Copyright (c) Florian Plesker
  */
 
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 const low = [72, 151, 177];
 const high = [181, -142, -168]; // aimed at 253, 9, 9
@@ -11,6 +11,7 @@ const high = [181, -142, -168]; // aimed at 253, 9, 9
     selector: 'app-card',
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
     @Input() value: number = 0;
