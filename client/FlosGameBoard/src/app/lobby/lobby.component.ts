@@ -2,11 +2,18 @@
  * Copyright (c) Florian Plesker
  */
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnDestroy,
+} from '@angular/core';
 import { ConnectionService } from '../connection/connection.service';
 import { LobbyInfo } from '../shared/utils';
 import { Router } from '@angular/router';
 import { GameTypes } from '../shared/game-utils';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-lobby',
@@ -14,15 +21,26 @@ import { GameTypes } from '../shared/game-utils';
     styleUrls: ['./lobby.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LobbyComponent {
+export class LobbyComponent implements OnDestroy {
     lobbyInfo: LobbyInfo;
     isReady = false;
+
+    private unsubscribe = new Subject();
 
     constructor(
         private readonly connection: ConnectionService,
         private readonly router: Router,
+        cd: ChangeDetectorRef,
     ) {
+        this.connection.lobbyChanged
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe(() => cd.markForCheck());
         this.lobbyInfo = connection.lobby!;
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 
     start() {

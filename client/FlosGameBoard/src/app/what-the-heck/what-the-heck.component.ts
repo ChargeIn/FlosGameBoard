@@ -2,7 +2,12 @@
  * Copyright (c) Florian Plesker
  */
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnDestroy,
+} from '@angular/core';
 import { ConnectionService } from '../connection/connection.service';
 import { WhatTheHeck } from './WhatTheHeck';
 import {
@@ -11,6 +16,8 @@ import {
     ScoreInfo,
     UserInfo,
 } from '../shared/utils';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-what-the-heck',
@@ -18,16 +25,18 @@ import {
     styleUrls: ['./what-the-heck.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WhatTheHeckComponent {
+export class WhatTheHeckComponent implements OnDestroy {
     game: WhatTheHeck;
     currentDeck: number[];
     currentCard: number | undefined;
     playedCard: number | null = null;
     players: { user: UserInfo; playedCard: boolean; score: number }[];
     opponents: number[] = [];
-    transition = true;
+    transition = false;
 
-    constructor(private connection: ConnectionService) {
+    unsubscribe = new Subject();
+
+    constructor(private connection: ConnectionService, cd: ChangeDetectorRef) {
         this.currentDeck = Array.from({ length: 15 }, (_, i) => i + 1);
         this.game = this.connection.game as WhatTheHeck;
         this.players = this.connection.lobby!.users.map((u) => ({
@@ -41,9 +50,15 @@ export class WhatTheHeckComponent {
             }
         });
 
-        this.game.nextCard.subscribe((card) => (this.currentCard = card));
+        this.game.nextCard
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe((card) => {
+                this.currentCard = card;
+                cd.markForCheck();
+            });
         this.game.draw.subscribe((_drawInfo: DrawInfo) => {
             this.roundFinished();
+            cd.markForCheck();
         });
         this.game.cardPlayed.subscribe((cardInfo) => {
             this.players.forEach((player) => {
@@ -51,21 +66,34 @@ export class WhatTheHeckComponent {
                     player.playedCard = cardInfo.played;
                 }
             });
+            cd.markForCheck();
         });
-        this.game.roundWinner.subscribe((winnerInfo: RoundWinnerInfo) => {
-            this.players.forEach((p) => {
-                if (p.user.id === winnerInfo.winnerId) {
-                    p.score += winnerInfo.points;
-                }
+        this.game.roundWinner
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe((winnerInfo: RoundWinnerInfo) => {
+                this.players.forEach((p) => {
+                    if (p.user.id === winnerInfo.winnerId) {
+                        p.score += winnerInfo.points;
+                    }
+                });
+                this.roundFinished();
+                cd.markForCheck();
             });
-            this.roundFinished();
-        });
-        this.game.scores.subscribe((scoreInfo: ScoreInfo) => {
-            this.currentCard = undefined;
-            this.players.forEach((player) => {
-                player.score = scoreInfo.scores[player.user.id];
+        this.game.scores
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe((scoreInfo: ScoreInfo) => {
+                this.currentCard = undefined;
+                this.transition = true;
+                this.players.forEach((player) => {
+                    player.score = scoreInfo.scores[player.user.id];
+                });
+                cd.markForCheck();
             });
-        });
+    }
+
+    ngOnDestroy() {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 
     playCard(card: number) {

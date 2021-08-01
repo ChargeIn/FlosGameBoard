@@ -2,27 +2,29 @@
  * Copyright (c) Florian Plesker
  */
 
-import { Component, Input, OnDestroy } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Input,
+} from '@angular/core';
 import { ConnectionService } from '../../connection/connection.service';
-import { Subject } from 'rxjs';
 import { ChatMessage, ChatType } from '../../shared/utils';
 
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ChatComponent implements OnDestroy {
+export class ChatComponent {
     @Input() messages: ChatMessage[] = [];
     message = '';
-    unsubscribe = new Subject<void>();
 
-    constructor(private readonly connection: ConnectionService) {}
-
-    ngOnDestroy(): void {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
-    }
+    constructor(
+        private readonly connection: ConnectionService,
+        private cd: ChangeDetectorRef,
+    ) {}
 
     postMessage() {
         if (this.message.length === 0) {
@@ -30,6 +32,7 @@ export class ChatComponent implements OnDestroy {
         }
         this.connection.postMessage(this.message);
         this.message = '';
+        this.cd.markForCheck();
     }
 
     isOwnMessage(type: ChatType) {

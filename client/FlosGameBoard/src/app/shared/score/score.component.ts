@@ -15,11 +15,14 @@ const low = [255, 60, 0];
 })
 export class ScoreComponent {
     @Input() score = 0;
+    // highest, lowest possible number
     @Input() range: [number, number] = [0, 1];
 
     getStyle() {
-        return `color: rgb(${low[0] + high[0] * ((this.score - 1) / 14)},${
-            low[1] + high[1] * ((this.score - 1) / 14)
-        },${low[2] + high[2] * ((this.score - 1) / 14)});`;
+        const scoreNormed =
+            (this.score - this.range[1]) / (this.range[0] - this.range[1]);
+        return `color: rgb(${low[0] + high[0] * scoreNormed},${
+            low[1] + high[1] * scoreNormed
+        },${low[2] + high[2] * scoreNormed});`;
     }
 }

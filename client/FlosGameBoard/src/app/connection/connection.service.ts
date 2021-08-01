@@ -2,7 +2,7 @@
  * Copyright (c) Florian Plesker
  */
 
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
     ChatMessage,
@@ -29,6 +29,8 @@ export class ConnectionService {
     avatar: number = 0;
     id: string = '';
 
+    lobbyChanged = new EventEmitter();
+
     constructor(
         private socket: WrappedSocket,
         private readonly router: Router,
@@ -48,6 +50,7 @@ export class ConnectionService {
             this.socket.on('playerJoined', (userInfo: UserInfo) => {
                 this.lobby!.userCount!++;
                 this.lobby!.users.push(userInfo);
+                this.lobbyChanged.emit();
             });
 
             this.socket.on('playerLeft', (id: string) => {
@@ -55,20 +58,21 @@ export class ConnectionService {
                 this.lobby!.users = this.lobby!.users.filter(
                     (user) => user.id !== id,
                 );
+                this.lobbyChanged.emit();
             });
 
-            this.socket.on(
-                'changeHost',
-                (host: boolean) => (this.lobby!.host = host),
-            );
+            this.socket.on('changeHost', (host: boolean) => {
+                this.lobby!.host = host;
+                this.lobbyChanged.emit();
+            });
 
             this.socket.on('gameStarted', (type: number) =>
                 this.loadGame(type),
             );
 
             this.socket.on('changeGame', (type: number) => {
-                console.log(type);
                 this.lobby!.type = type;
+                this.lobbyChanged.emit();
             });
 
             this.socket.on(
@@ -79,6 +83,7 @@ export class ConnectionService {
                             user.ready = obj.isReady;
                         }
                     });
+                    this.lobbyChanged.emit();
                 },
             );
         });
