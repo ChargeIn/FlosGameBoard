@@ -20,21 +20,21 @@ import { SidenavModule } from './sidenav/sidenav.module';
 import { SocketIoModule } from './connection/socket/socket-io.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    SocketIoModule.forRoot(environment.config),
-    BrowserAnimationsModule,
-    MatDialogModule,
-    SidenavModule,
-  ],
-  providers: [SidenavService],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        AppRoutingModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        SocketIoModule.forRoot(environment.config),
+        BrowserAnimationsModule,
+        MatDialogModule,
+        SidenavModule,
+    ],
+    providers: [SidenavService],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
