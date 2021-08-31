@@ -37,7 +37,7 @@ export interface ScoreInfo {
 export interface RoundWinnerInfo {
     winnerId: string;
     points: number;
-    cards: { user: UserInfo; card: number }[];
+    cards: { userId: string; card: number }[];
 }
 
 export interface DrawInfo {

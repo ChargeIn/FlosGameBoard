@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Fixed score colors.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/shared/score/score.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/shared/score/score.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/shared/score/score.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/shared/score/score.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/shared/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/shared/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/WhatTheHeck.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/WhatTheHeck.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/game-factory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/game-factory.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +37,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.Client">
@@ -98,7 +100,8 @@
       <workItem from="1627819139844" duration="4024000" />
       <workItem from="1627840070278" duration="4456000" />
       <workItem from="1630003177658" duration="778000" />
-      <workItem from="1630004281652" duration="1827000" />
+      <workItem from="1630004281652" duration="1877000" />
+      <workItem from="1630438886702" duration="3507000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -191,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627846362216</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed score colors.">
+      <created>1630006187505</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1630006187505</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

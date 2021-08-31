@@ -10,12 +10,7 @@ import {
 } from '@angular/core';
 import { ConnectionService } from '../connection/connection.service';
 import { WhatTheHeck } from './WhatTheHeck';
-import {
-    DrawInfo,
-    RoundWinnerInfo,
-    ScoreInfo,
-    UserInfo,
-} from '../shared/utils';
+import { RoundWinnerInfo, ScoreInfo, UserInfo } from '../shared/utils';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -30,18 +25,22 @@ export class WhatTheHeckComponent implements OnDestroy {
     currentDeck: number[];
     currentCard: number | undefined;
     playedCard: number | null = null;
-    players: { user: UserInfo; playedCard: boolean; score: number }[];
+    players: { user: UserInfo; playedCard: number; score: number }[];
     opponents: number[] = [];
     transition = false;
 
     unsubscribe = new Subject();
+    spin = false;
 
-    constructor(private connection: ConnectionService, cd: ChangeDetectorRef) {
+    constructor(
+        private connection: ConnectionService,
+        private readonly cd: ChangeDetectorRef,
+    ) {
         this.currentDeck = Array.from({ length: 15 }, (_, i) => i + 1);
         this.game = this.connection.game as WhatTheHeck;
         this.players = this.connection.lobby!.users.map((u) => ({
             user: u,
-            playedCard: false,
+            playedCard: -1,
             score: 0,
         }));
         this.players.forEach((p, i) => {
@@ -56,28 +55,39 @@ export class WhatTheHeckComponent implements OnDestroy {
                 this.currentCard = card;
                 cd.markForCheck();
             });
-        this.game.draw.subscribe((_drawInfo: DrawInfo) => {
-            this.roundFinished();
-            cd.markForCheck();
-        });
+
         this.game.cardPlayed.subscribe((cardInfo) => {
             this.players.forEach((player) => {
                 if (player.user.id === cardInfo.id) {
-                    player.playedCard = cardInfo.played;
+                    player.playedCard = 0;
                 }
             });
             cd.markForCheck();
         });
-        this.game.roundWinner
+        this.game.endRound
             .pipe(takeUntil(this.unsubscribe))
             .subscribe((winnerInfo: RoundWinnerInfo) => {
-                this.players.forEach((p) => {
-                    if (p.user.id === winnerInfo.winnerId) {
-                        p.score += winnerInfo.points;
-                    }
-                });
-                this.roundFinished();
+                this.spin = true;
                 cd.markForCheck();
+
+                setTimeout(() => {
+                    this.spin = false;
+                    if (winnerInfo.winnerId !== '') {
+                        this.players.forEach((p) => {
+                            if (p.user.id === winnerInfo.winnerId) {
+                                p.score += winnerInfo.points;
+                            }
+                        });
+                    }
+
+                    winnerInfo.cards.forEach((card) => {
+                        this.players.filter(
+                            (p) => p.user.id === card.userId,
+                        )![0].playedCard = card.card;
+                    });
+                    this.showScores();
+                    cd.markForCheck();
+                }, 1000);
             });
         this.game.scores
             .pipe(takeUntil(this.unsubscribe))
@@ -108,8 +118,13 @@ export class WhatTheHeckComponent implements OnDestroy {
 
     roundFinished() {
         this.players.forEach((player) => {
-            player.playedCard = false;
+            player.playedCard = -1;
         });
         this.playedCard = null;
+        this.cd.markForCheck();
+    }
+
+    private showScores() {
+        setTimeout(() => this.roundFinished(), 2000);
     }
 }

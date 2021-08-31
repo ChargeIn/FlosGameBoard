@@ -51,13 +51,13 @@ export class WhatTheHeck implements Game {
                     const winner: string | null = this.getWinner();
                     const playedCards = this.cards.map((c) => ({
                         card: c.card,
-                        user: c.user.socket.id,
+                        userId: c.user.socket.id,
                     }));
 
                     if (winner) {
                         console.log(winner + ' is the winner of round');
                         this.users.forEach((u) => {
-                            u.socket.emit('roundWinner', {
+                            u.socket.emit('endRound', {
                                 winnerId: winner,
                                 points: this.currentCard,
                                 cards: playedCards,
@@ -86,7 +86,9 @@ export class WhatTheHeck implements Game {
                                 'Draw:' + this.cards.map((c) => c.card),
                             );
                             this.users.forEach((usr) =>
-                                usr.socket.emit('draw', {
+                                usr.socket.emit('endRound', {
+                                    winnerId: '',
+                                    points: this.currentCard,
                                     cards: playedCards,
                                 }),
                             );
