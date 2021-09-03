@@ -3,17 +3,20 @@
   -->
 
 <div class="landing-page">
-    <div class="main-header">
-        <img class="shades" src="../../assets/logos/spades.png" alt="spades-symbol">
-        <h1 class="big-accent-header">Welcome</h1>
+    <div class="flex-grow-1">&nbsp;</div>
+    <div class="main-header animate-slideup">
+        <h1 class="big-accent-header">Welcome <img class="shades" src="../../assets/logos/spades.png"
+                                                   alt="spades-symbol"></h1>
 
         <div class="info-text">
             Please select a avatar and try joining a lobby.
         </div>
-        <button *ngIf="isSmallScreen()" mat-flat-button color="accent" (click)="openLobbies()">Lobbies</button>
+        <div class="button-container" *ngIf="isSmallScreen()">
+            <button mat-flat-button color="accent" (click)="openLobbies()">Lobbies</button>
+        </div>
     </div>
-
-    <div class="character-chooser">
+    <div class="flex-grow-1">&nbsp;</div>
+    <div class="character-chooser animate-slideup flex-grow-1">
         <div class="avatar-chooser">
             <button mat-icon-button class="choose-btn l-0 b-0" (click)="changeAvatar()">
                 <mat-icon color="accent">navigate_before</mat-icon>
@@ -29,4 +32,5 @@
                    (keyup)="setName(name.value)">
         </div>
     </div>
+    <div class="flex-grow-1">&nbsp;</div>
 </div>
