@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Started working on reveal animations">
-      <change afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/assets/images/wave.svg" afterDir="false" />
+    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Added wave animation.&#10;Reworked landing-page display scss">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/credits/credits.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/credits/credits.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +33,10 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.Client">
+  <component name="RunManager" selected="npm.Server">
     <configuration name="Client" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/client/FlosGameBoard/package.json" />
       <command value="run" />
@@ -67,8 +63,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Client" />
         <item itemvalue="npm.Server" />
+        <item itemvalue="npm.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -102,7 +98,8 @@
       <workItem from="1630003177658" duration="778000" />
       <workItem from="1630004281652" duration="1877000" />
       <workItem from="1630438886702" duration="3568000" />
-      <workItem from="1630695733241" duration="5477000" />
+      <workItem from="1630695733241" duration="5508000" />
+      <workItem from="1630749634221" duration="4969000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -209,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630442449522</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added wave animation.&#10;Reworked landing-page display scss">
+      <created>1630701823429</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1630701823429</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +245,8 @@
     <MESSAGE value="Working on scores/ end screen.&#10;Smaller Fixes to the change detection." />
     <MESSAGE value="Fixed score colors." />
     <MESSAGE value="Started working on reveal animations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started working on reveal animations" />
+    <MESSAGE value="Added wave animation.&#10;Reworked landing-page display scss" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added wave animation.&#10;Reworked landing-page display scss" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
