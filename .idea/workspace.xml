@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Added wave animation.&#10;Reworked landing-page display scss">
+    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Finished landing-page slide up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/landing-page/landing-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +99,9 @@
       <workItem from="1630004281652" duration="1877000" />
       <workItem from="1630438886702" duration="3568000" />
       <workItem from="1630695733241" duration="5508000" />
-      <workItem from="1630749634221" duration="4969000" />
+      <workItem from="1630749634221" duration="5002000" />
+      <workItem from="1630763540944" duration="113000" />
+      <workItem from="1630779436078" duration="1683000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -213,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630701823429</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Finished landing-page slide up">
+      <created>1630759877156</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1630759877156</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +255,8 @@
     <MESSAGE value="Fixed score colors." />
     <MESSAGE value="Started working on reveal animations" />
     <MESSAGE value="Added wave animation.&#10;Reworked landing-page display scss" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added wave animation.&#10;Reworked landing-page display scss" />
+    <MESSAGE value="Finished landing-page slide up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished landing-page slide up" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
