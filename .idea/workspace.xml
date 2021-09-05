@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Finished landing-page slide up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/lobby/lobby.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +33,10 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/prettier" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/FlosGameBoard/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.Server">
+  <component name="RunManager" selected="npm.Client">
     <configuration name="Client" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/client/FlosGameBoard/package.json" />
       <command value="run" />
@@ -63,8 +63,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Server" />
         <item itemvalue="npm.Client" />
+        <item itemvalue="npm.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -102,6 +102,7 @@
       <workItem from="1630749634221" duration="5002000" />
       <workItem from="1630763540944" duration="113000" />
       <workItem from="1630779436078" duration="1683000" />
+      <workItem from="1630835074317" duration="4153000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>

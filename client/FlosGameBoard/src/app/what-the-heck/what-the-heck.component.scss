@@ -22,6 +22,19 @@
     align-items: center;
   }
 
+  .small-avatar-wrapper {
+    height: 50px;
+    padding-bottom: 5px;
+
+    .checked-icon {
+      position: absolute;
+      top: 32px;
+      right: 2px;
+      font-weight: 800;
+      color: #1bff00;
+    }
+  }
+
   .player-card {
     width: 40px;
     height: 40px;
@@ -32,11 +45,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    mat-icon {
-      color: #000000;
-      font-weight: 800;
-    }
 
     &.played {
       border: none;
