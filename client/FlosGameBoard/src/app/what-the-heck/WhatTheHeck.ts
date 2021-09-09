@@ -38,6 +38,10 @@ export class WhatTheHeck extends Game {
         this.socket.emit('removeCard');
     }
 
+    ready() {
+        this.socket.emit('ready');
+    }
+
     howToPlay(): string {
         return `
             <span>Every player starts with the same set of cards ranging from 1 to 15.</span><br><br>

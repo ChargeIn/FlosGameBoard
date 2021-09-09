@@ -17,6 +17,7 @@ import { Title } from '@angular/platform-browser';
 import { CreateLobbyRequest, JoinLobbyRequest } from '../shared/request';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { WrappedSocket } from './socket/socket-io.service';
+import { AppService } from '../app.service';
 
 @Injectable({
     providedIn: 'root',
@@ -36,16 +37,20 @@ export class ConnectionService {
         private readonly router: Router,
         private titleService: Title,
         private readonly sideNav: SidenavService,
+        private readonly appService: AppService,
     ) {
         socket.connect();
         this.chat = this.socket.fromEvent('chat');
 
         this.socket.on('joinLobby', (lobbyAck: LobbyInfo) => {
             this.sideNav.close();
-            this.titleService.setTitle('Lobby: ' + lobbyAck.name);
+            this.appService.startTransition(() => {
+                this.router.navigate(['lobby']);
+                this.titleService.setTitle('Lobby: ' + lobbyAck.name);
+            });
+
             this.socket.removeAllListeners('landingPage');
             this.lobby = lobbyAck;
-            this.router.navigate(['lobby']);
 
             this.socket.on('playerJoined', (userInfo: UserInfo) => {
                 this.lobby!.userCount!++;
@@ -147,7 +152,9 @@ export class ConnectionService {
 
         this.titleService.setTitle('Game: ' + this.game.getName());
 
-        this.router.navigate([GameTypes.getGamePath(type)]);
+        this.appService.startTransition(() =>
+            this.router.navigate([GameTypes.getGamePath(type)]),
+        );
     }
 
     changeGame(type: number) {

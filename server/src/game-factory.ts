@@ -36,12 +36,40 @@ export class WhatTheHeck implements Game {
         this.users = users;
         this.generateNewCardDeck();
         this.currentCard = this.cardDeck.pop()!;
+
+        let ready = 0;
+        users.forEach((user) => {
+            user.socket.on('ready', () => {
+                ready++;
+                console.log(
+                    'User ' +
+                        user.name +
+                        ' is ready to play (' +
+                        +'/' +
+                        users.length +
+                        ')',
+                );
+                if (ready >= users.length) {
+                    this.startGame();
+                    this.users.forEach((usr) => {
+                        usr.socket.removeAllListeners('ready');
+                    });
+                }
+            });
+        });
+    }
+
+    private startGame(): void {
+        this.subscribeUsers();
+
         this.users.forEach((u) => {
             u.socket.emit('nextCard', this.currentCard);
             this.scores[u.socket.id] = 0;
         });
+    }
 
-        users.forEach((user) => {
+    private subscribeUsers(): void {
+        this.users.forEach((user) => {
             user.socket.on('playCard', (num: number) => {
                 console.log(user.socket.id + ' played card ' + num);
                 this.cards.push({ user, card: num });

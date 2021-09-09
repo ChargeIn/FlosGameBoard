@@ -20,6 +20,15 @@
         <app-sidenav></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content class="main-content">
+        <div class="slider-wrapper">
+            <div class="slider" [class.slide-animation]="transition">
+                <div class="column-0"></div>
+                <div class="column-1"></div>
+                <div class="column-2"></div>
+                <div class="column-3"></div>
+                <div class="column-4"></div>
+            </div>
+        </div>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

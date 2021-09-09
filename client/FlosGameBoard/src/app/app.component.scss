@@ -46,3 +46,49 @@ $prime-light: #1b2733;
 .mat-button-toggle-label-content {
   line-height: 40px;
 }
+
+$columns: 4;
+
+.slider-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  overflow: visible;
+  $columns: 5;
+  transform: translateX(-200%);
+
+
+  @for $i from 0 through $columns {
+    .column-#{$i} {
+      position: absolute;
+      top: 20%*$i;
+      left: -20%*$i;
+      width: 100%;
+      height: 20%;
+      background: linear-gradient(221deg, var(--accent-color), var(--primary-color));
+    }
+  }
+}
+
+.slide-animation {
+  animation: slide 1s 1 linear;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}

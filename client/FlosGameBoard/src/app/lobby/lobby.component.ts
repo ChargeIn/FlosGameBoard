@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { GameTypes } from '../shared/game-utils';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AppService } from '../app.service';
 
 @Component({
     selector: 'app-lobby',
@@ -29,6 +30,7 @@ export class LobbyComponent implements OnDestroy {
 
     constructor(
         private readonly connection: ConnectionService,
+        private readonly appService: AppService,
         private readonly router: Router,
         cd: ChangeDetectorRef,
     ) {
@@ -49,7 +51,7 @@ export class LobbyComponent implements OnDestroy {
 
     leaveLobby() {
         this.connection.leaveLobby();
-        this.router.navigate(['/']);
+        this.appService.startTransition(() => this.router.navigate(['/']));
     }
 
     onGameChange(type: number) {

@@ -18,6 +18,7 @@ import { SidenavService } from './sidenav/sidenav.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SidenavModule } from './sidenav/sidenav.module';
 import { SocketIoModule } from './connection/socket/socket-io.module';
+import { AppService } from './app.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -34,7 +35,7 @@ import { SocketIoModule } from './connection/socket/socket-io.module';
         MatDialogModule,
         SidenavModule,
     ],
-    providers: [SidenavService],
+    providers: [SidenavService, AppService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

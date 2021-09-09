@@ -3,6 +3,7 @@
  */
 
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -20,7 +21,7 @@ import { takeUntil } from 'rxjs/operators';
     styleUrls: ['./what-the-heck.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WhatTheHeckComponent implements OnDestroy {
+export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
     game: WhatTheHeck;
     currentDeck: number[];
     currentCard: number | undefined;
@@ -99,6 +100,10 @@ export class WhatTheHeckComponent implements OnDestroy {
                 });
                 cd.markForCheck();
             });
+    }
+
+    ngAfterViewInit() {
+        this.game.ready();
     }
 
     ngOnDestroy() {
