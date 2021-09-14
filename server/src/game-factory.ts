@@ -74,6 +74,13 @@ export class WhatTheHeck implements Game {
                 console.log(user.socket.id + ' played card ' + num);
                 this.cards.push({ user, card: num });
 
+                this.users.forEach((u) => {
+                    u.socket.emit('cardPlayed', {
+                        id: user.socket.id,
+                        played: true,
+                    });
+                });
+
                 if (this.cards.length === this.users.length) {
                     this.cardsPlayed++;
                     const winner: string | null = this.getWinner();
@@ -131,13 +138,6 @@ export class WhatTheHeck implements Game {
                     }
 
                     this.cards = [];
-                } else {
-                    this.users.forEach((u) => {
-                        u.socket.emit('cardPlayed', {
-                            id: user.socket.id,
-                            played: true,
-                        });
-                    });
                 }
             });
 
