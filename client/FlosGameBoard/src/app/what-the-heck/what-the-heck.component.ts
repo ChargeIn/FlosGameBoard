@@ -33,6 +33,8 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
     unsubscribe = new Subject();
     spin = false;
 
+    readonly transitionTime = 1000;
+
     constructor(
         private connection: ConnectionService,
         private readonly cd: ChangeDetectorRef,
@@ -53,8 +55,13 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
         this.game.nextCard
             .pipe(takeUntil(this.unsubscribe))
             .subscribe((card) => {
-                this.currentCard = card;
-                cd.markForCheck();
+                setTimeout(
+                    () => {
+                        this.currentCard = card;
+                        cd.markForCheck();
+                    },
+                    this.currentCard ? this.transitionTime : 0,
+                );
             });
 
         this.game.cardPlayed.subscribe((cardInfo) => {
@@ -88,17 +95,23 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
                     });
                     this.showScores();
                     cd.markForCheck();
-                }, 1000);
+                }, this.transitionTime);
             });
+
         this.game.scores
             .pipe(takeUntil(this.unsubscribe))
             .subscribe((scoreInfo: ScoreInfo) => {
-                this.currentCard = undefined;
-                this.transition = true;
-                this.players.forEach((player) => {
-                    player.score = scoreInfo.scores[player.user.id];
-                });
-                cd.markForCheck();
+                setTimeout(() => {
+                    this.currentCard = undefined;
+                    this.transition = true;
+                    this.players.forEach((player) => {
+                        player.score = scoreInfo.scores[player.user.id];
+                    });
+                    this.players = this.players.sort(
+                        (a, b) => b.score - a.score,
+                    );
+                    cd.markForCheck();
+                }, this.transitionTime);
             });
     }
 
@@ -130,6 +143,6 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
     }
 
     private showScores() {
-        setTimeout(() => this.roundFinished(), 2000);
+        setTimeout(() => this.roundFinished(), this.transitionTime);
     }
 }

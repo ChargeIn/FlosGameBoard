@@ -50,6 +50,7 @@ $prime-light: #1b2733;
 $columns: 4;
 
 .slider-wrapper {
+  pointer-events: none;
   position: absolute;
   width: 100%;
   height: 100%;

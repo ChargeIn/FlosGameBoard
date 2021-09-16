@@ -6,10 +6,12 @@
     <div class="content">
         <h2>Scores</h2>
         <div class="d-flex flex-column w-100">
-            <div class="player-info-container" *ngFor="let player of players">
+            <div class="player-info-container" *ngFor="let player of players; let i = index">
                 <img alt="Avatar" class="avatar-small"
                      src="assets/avatars/{{player.user.avatar}}.png">
-                <span class="player-name flex-grow-1">{{player.user.name}}</span>
+                <span class="player-name">{{player.user.name}}</span>
+                <img *ngIf="i === 0" src="assets/images/trophy.png" alt="winner-trophy" class="trophy">
+                <div class="flex-grow-1"></div>
                 <score [score]="player.score" [range]="[20, -10]"></score>
             </div>
         </div>
