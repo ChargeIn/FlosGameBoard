@@ -32,7 +32,7 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
     unsubscribe = new Subject();
     spin = false;
 
-    readonly transitionTime = 1000;
+    readonly transitionTime = 2000;
 
     constructor(
         private connection: ConnectionService,
@@ -89,7 +89,7 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
                     });
                     this.showScores();
                     cd.markForCheck();
-                }, this.transitionTime);
+                }, 500);
             });
 
         this.game.scores
@@ -137,6 +137,6 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
     }
 
     private showScores() {
-        setTimeout(() => this.roundFinished(), this.transitionTime);
+        setTimeout(() => this.roundFinished(), this.transitionTime - 500);
     }
 }

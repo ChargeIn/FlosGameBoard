@@ -8,10 +8,7 @@
 
 export const environment = {
     production: false,
-    config: {
-        url: '/',
-        options: {},
-    },
+    config: { url: 'http://localhost:3000', options: {} },
 };
 
 /*

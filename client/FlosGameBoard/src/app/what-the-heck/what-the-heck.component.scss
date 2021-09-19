@@ -20,6 +20,7 @@
   max-width: 100%;
 
   .player {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,7 +147,7 @@
 }
 
 .spin {
-  animation: spinner 1s 1 linear;
+  animation: spinner 0.5s 1 linear;
   box-shadow: none !important;
 }
 
