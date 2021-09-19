@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Added winner trophy">
+    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Fixed some release options">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.prod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/game-factory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/game-factory.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +126,7 @@
       <workItem from="1632053369017" duration="624000" />
       <workItem from="1632056434408" duration="86000" />
       <workItem from="1632056998146" duration="143000" />
-      <workItem from="1632064548575" duration="2933000" />
+      <workItem from="1632064548575" duration="4366000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -269,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631823715888</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fixed some release options">
+      <created>1632067537405</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1632067537405</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +312,8 @@
     <MESSAGE value="Added transition animations." />
     <MESSAGE value="Fixed last card not played showing." />
     <MESSAGE value="Added winner trophy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added winner trophy" />
+    <MESSAGE value="Fixed some release options" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some release options" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

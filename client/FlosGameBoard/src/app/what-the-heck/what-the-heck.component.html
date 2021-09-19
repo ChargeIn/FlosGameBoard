@@ -26,15 +26,15 @@
     </div>
 
     <div class="player-container">
-        <div *ngFor="let i of opponents, let j = index" class="player-{{j}} player">
+        <div *ngFor="let player of players, let j = index" class="player-{{j}} player">
             <div class="small-avatar-wrapper">
-                <img alt="Avatar" class="avatar-small" src="assets/avatars/{{players[i].user.avatar}}.png">
-                <mat-icon class="checked-icon" *ngIf="players[i].playedCard === 0">check</mat-icon>
+                <img alt="Avatar" class="avatar-small" src="assets/avatars/{{player.user.avatar}}.png">
+                <mat-icon class="checked-icon" *ngIf="player.playedCard === 0">check</mat-icon>
             </div>
-            {{players[i].user.name}}
-            <score [score]="players[i].score" [range]="[20, -10]"></score>
-            <div class="player-card" [class.played]="players[i].playedCard > -1" [class.spin]="spin">
-                <span class="player-card-score" *ngIf="players[i].playedCard > 0">{{players[i].playedCard}}</span>
+            {{player.user.name}}
+            <score [score]="player.score" [range]="[20, -10]"></score>
+            <div class="player-card" [class.played]="player.playedCard > -1" [class.spin]="spin">
+                <span class="player-card-score" *ngIf="player.playedCard > 0">{{player.playedCard}}</span>
             </div>
         </div>
     </div>

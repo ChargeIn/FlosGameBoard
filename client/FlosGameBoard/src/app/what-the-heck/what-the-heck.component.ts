@@ -27,7 +27,6 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
     currentCard: number | undefined;
     playedCard: number | null = null;
     players: { user: UserInfo; playedCard: number; score: number }[];
-    opponents: number[] = [];
     transition = false;
 
     unsubscribe = new Subject();
@@ -46,11 +45,6 @@ export class WhatTheHeckComponent implements OnDestroy, AfterViewInit {
             playedCard: -1,
             score: 0,
         }));
-        this.players.forEach((p, i) => {
-            if (p.user.id !== connection.lobby!.playerId) {
-                this.opponents.push(i);
-            }
-        });
 
         this.game.nextCard
             .pipe(takeUntil(this.unsubscribe))

@@ -169,7 +169,7 @@ export class WhatTheHeck implements Game {
             return null;
         }
 
-        if (this.currentCard! > 0) {
+        if (this.currentCard! < 0) {
             let i = 0;
 
             while (i < cardCounts.length) {
