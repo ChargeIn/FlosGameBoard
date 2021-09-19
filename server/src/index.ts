@@ -14,7 +14,6 @@ import { interval, Subject } from 'rxjs';
 
 const express = require('express');
 const http = require('http');
-const path = require('path');
 const socketio = require('socket.io');
 
 const app = express();
@@ -22,11 +21,7 @@ const server = http.createServer(app);
 const io = socketio(server, { cors: { origin: '*' } }); // TODO: remove cors allowance on release
 
 // TODO: adjust static file folders
-app.use(
-    express.static(
-        path.join(__dirname, '../client/FlosGameBoard/dist/FlosGameBoard'),
-    ),
-);
+app.use(express.static('../client/FlosGameBoard/dist/FlosGameBoard'));
 
 let mainChat: Socket[] = [];
 let lobbies: Lobby[] = [];

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Fixed last card not played showing.">
-      <change afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/assets/images/trophy.png" afterDir="false" />
+    <list default="true" id="ec169784-003f-4f21-8136-bf6ab3843ac8" name="Default Changelist" comment="Added winner trophy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/credits/credits.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/credits/credits.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/what-the-heck/what-the-heck.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/FlosGameBoard/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/FlosGameBoard/src/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -53,7 +52,7 @@
       <recent name="$PROJECT_DIR$/client/FlosGameBoard/src/assets/images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Client">
+  <component name="RunManager" selected="npm.Server">
     <configuration name="Client" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/client/FlosGameBoard/package.json" />
       <command value="run" />
@@ -80,8 +79,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Client" />
         <item itemvalue="npm.Server" />
+        <item itemvalue="npm.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -123,7 +122,12 @@
       <workItem from="1631211731590" duration="5963000" />
       <workItem from="1631306503151" duration="74000" />
       <workItem from="1631645025902" duration="3435000" />
-      <workItem from="1631820647416" duration="2007000" />
+      <workItem from="1631820647416" duration="2129000" />
+      <workItem from="1631990785545" duration="1265000" />
+      <workItem from="1632053369017" duration="624000" />
+      <workItem from="1632056434408" duration="86000" />
+      <workItem from="1632056998146" duration="143000" />
+      <workItem from="1632064548575" duration="2933000" />
     </task>
     <task id="LOCAL-00001" summary="Added workspace files">
       <created>1622790465649</created>
@@ -258,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631646687273</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added winner trophy">
+      <created>1631823715888</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1631823715888</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +305,8 @@
     <MESSAGE value="Finished landing-page slide up" />
     <MESSAGE value="Added transition animations." />
     <MESSAGE value="Fixed last card not played showing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed last card not played showing." />
+    <MESSAGE value="Added winner trophy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added winner trophy" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

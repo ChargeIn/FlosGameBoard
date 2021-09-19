@@ -3,6 +3,9 @@
  */
 
 export const environment = {
-  production: true,
-  config: { url: 'http://localhost:3000', options: {}}
+    production: true,
+    config: {
+        url: '/',
+        options: {},
+    },
 };

@@ -7,8 +7,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  config: { url: 'http://localhost:3000', options: {}}
+    production: false,
+    config: {
+        url: '/',
+        options: {},
+    },
 };
 
 /*
